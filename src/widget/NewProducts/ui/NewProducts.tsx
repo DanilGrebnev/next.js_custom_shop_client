@@ -3,11 +3,12 @@ import { ContainerWithTitle } from '@/shared/ui/Containers/ContainerWithTitle'
 import { Slider } from '@/shared/ui/Slider'
 import { ProductCard } from '@/shared/ui/Cards'
 import { IProduct } from '@/app/types/Product'
+import { IHomePageProducts } from '@/app/types/HomePage'
 // import mock from '@/mock/mock'
 
 interface INewProductsProps {
     className?: string
-    products: IProduct[]
+    products: IHomePageProducts[]
 }
 
 export const NewProducts: FC<INewProductsProps> = (props) => {

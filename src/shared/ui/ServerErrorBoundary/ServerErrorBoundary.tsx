@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react'
 import { ErrorPage } from '../ErrorPage'
+import { ReserveErrorComponent } from '../ReserveErrorComponent'
 
 export const ServerErrorBoundary = ({
     error,
@@ -11,7 +12,7 @@ export const ServerErrorBoundary = ({
     reset: () => void
 }) => {
     useEffect(() => {
-        console.log(error)
+        console.log('Ошибка', error)
     }, [error])
 
     return (

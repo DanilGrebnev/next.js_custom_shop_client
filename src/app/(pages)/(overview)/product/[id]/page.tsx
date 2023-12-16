@@ -6,10 +6,13 @@ import { ThumbsGallery } from '@/shared/ui/ThumbsGallery'
 import { getProduct, getProductTEST } from './api'
 import { BreadCrumbs } from '@/shared/ui/BreadCrumbs'
 import { NavigationRoutes } from '@/app/providers/NavigationRoutes'
+import { ReserveErrorComponent } from '@/shared/ui/ReserveErrorComponent'
+
 import mock from '@/mock/mock'
 
 import clsx from 'clsx'
 import s from './page.module.scss'
+import { OutputErrorOnClient } from '@/shared/ui/OutputErrorOnClient/OutputErrorOnClient'
 
 interface IProductPage {
     params: { id: string }
@@ -35,52 +38,61 @@ export const generateMetadata = async ({ params }: IProductPage) => {
 
 const ProductPage = async ({ params }: IProductPage) => {
     const { id } = params
-    // const product = await getProduct(id)
-    const product = await getProductTEST()
+    try {
+        // const product = await getProduct(id)
+        const product = await getProductTEST()
 
-    return (
-        <>
-            <BreadCrumbs
-                breadcrumbs={[
-                    { href: NavigationRoutes.main(), label: 'Home' },
-                    { href: NavigationRoutes.shop(), label: 'Shop' },
-                    {
-                        href: '/shop?=' + product.category.name,
-                        label: product.category.name,
-                    },
-                    { href: '/', label: product.name, active: true },
-                ]}
+        return (
+            <>
+                <BreadCrumbs
+                    breadcrumbs={[
+                        { href: NavigationRoutes.main(), label: 'Home' },
+                        { href: NavigationRoutes.shop(), label: 'Shop' },
+                        {
+                            href: '/shop?=' + product.category.name,
+                            label: product.category.name,
+                        },
+                        { href: '/', label: product.name, active: true },
+                    ]}
+                />
+                <section
+                    id="Product-Page"
+                    className={clsx(s.ProductPage, 'contain')}>
+                    <div className={s['left-col']}>
+                        <ThumbsGallery
+                            alt={product.name}
+                            images={product.images}
+                        />
+                    </div>
+                    <div className={s['right-col']}>
+                        <span className={s['category-title']}>
+                            {product.category.name}
+                        </span>
+
+                        <h1 className={s.name}>{product.name}</h1>
+
+                        <Rating rating={4} />
+
+                        <div className={s.price}>${product.price}</div>
+
+                        <p className={s.description}>{product.description}</p>
+
+                        <StandartDropDown title="color" />
+                        <StandartDropDown title="storage" />
+
+                        <ProductBuyControl />
+                    </div>
+                </section>
+            </>
+        )
+    } catch (err) {
+        return (
+            <ReserveErrorComponent
+                error={err}
+                componentName="ProductPage"
             />
-            <section
-                id="Product-Page"
-                className={clsx(s.ProductPage, 'contain')}>
-                <div className={s['left-col']}>
-                    <ThumbsGallery
-                        alt={product.name}
-                        images={product.images}
-                    />
-                </div>
-                <div className={s['right-col']}>
-                    <span className={s['category-title']}>
-                        {product.category.name}
-                    </span>
-
-                    <h1 className={s.name}>{product.name}</h1>
-
-                    <Rating rating={4} />
-
-                    <div className={s.price}>${product.price}</div>
-
-                    <p className={s.description}>{product.description}</p>
-
-                    <StandartDropDown title="color" />
-                    <StandartDropDown title="storage" />
-
-                    <ProductBuyControl />
-                </div>
-            </section>
-        </>
-    )
+        )
+    }
 }
 
 export default ProductPage

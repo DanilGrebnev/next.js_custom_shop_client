@@ -1,12 +1,12 @@
 import { FC } from 'react'
-import Image from 'next/image'
+import Image, { StaticImageData } from 'next/image'
 
 import clsx from 'clsx'
 import s from './CardPreview.module.scss'
 
 interface ICardPreviewProps {
     className?: string
-    images: { image: string }[]
+    images: { image: string | StaticImageData }[]
     alt: string
 }
 

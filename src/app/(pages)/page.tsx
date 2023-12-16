@@ -6,23 +6,29 @@ import { BestsellerProducts } from '@/widget/BestsellerProducts'
 import { ShopByFeaturedCategories } from '@/widget/ShopByFeaturedCategories'
 import { fetchHomePageData } from './api'
 import { ReserveErrorComponent } from '@/shared/ui/ReserveErrorComponent'
+import { IHomePageProducts } from '../types/HomePage'
+
 import mock from '../../mock/mock'
 
 export default async function HomePage() {
     try {
-        const homePageData = await fetchHomePageData()
+        // const homePageData = await fetchHomePageData()
 
         return (
             <section id="Home-Page">
                 <TopSlider />
 
-                <FeaturedProducts products={[]} />
+                <FeaturedProducts products={mock.feature_product as any} />
 
-                <NewProducts products={[]} />
+                <NewProducts products={mock.newProduct as any} />
 
                 {/* <FeedBackBlock /> */}
 
-                <BestsellerProducts products={[]} />
+                <BestsellerProducts
+                    products={
+                        mock.bestsellerProduct as unknown as IHomePageProducts[]
+                    }
+                />
 
                 <ShopByFeaturedCategories />
             </section>

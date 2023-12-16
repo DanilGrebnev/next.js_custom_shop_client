@@ -2,10 +2,12 @@ import { ContainerWithTitle } from '@/shared/ui/Containers/ContainerWithTitle'
 import { Slider } from '@/shared/ui/Slider'
 import { ProductCard } from '@/shared/ui/Cards'
 import { IProduct } from '@/app/types/Product'
+import { ReserveErrorComponent } from '@/shared/ui/ReserveErrorComponent'
+import { IHomePageProducts } from '@/app/types/HomePage'
 import mock from '@/mock/mock'
 
 interface IFeaturedProductsProps {
-    products: IProduct[] | undefined
+    products: IHomePageProducts[] | undefined
 }
 
 export const FeaturedProducts = (props: IFeaturedProductsProps) => {
@@ -22,9 +24,9 @@ export const FeaturedProducts = (props: IFeaturedProductsProps) => {
                             key={i}
                             productId={product.id}
                             name={product.name}
-                            images={product.images}
                             price={product.price}
                             rating={1}
+                            images={product.images}
                         />
                     )
                 })}

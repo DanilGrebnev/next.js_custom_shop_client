@@ -1,13 +1,14 @@
 import { ContainerWithTitle } from '@/shared/ui/Containers/ContainerWithTitle'
 import { Slider } from '@/shared/ui/Slider'
 import { ProductCard } from '@/shared/ui/Cards'
-import clsx from 'clsx'
-
-import mock from '@/mock/mock'
 import { IProduct } from '@/app/types/Product'
 
+import clsx from 'clsx'
+import { IHomePageProducts } from '@/app/types/HomePage'
+import mock from '@/mock/mock'
+
 interface IBestsellerProducts {
-    products: IProduct[]
+    products: IHomePageProducts[]
 }
 
 export const BestsellerProducts = (props: IBestsellerProducts) => {

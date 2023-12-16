@@ -1,12 +1,14 @@
+import { StaticImageData } from 'next/image'
+
 export interface IImage {
-    image: string
+    image: string | StaticImageData
 }
 
 export interface ICategory {
     id: number
     name: string
     slug: string
-    image: string
+    image: string | StaticImageData
 }
 
 export interface IProduct {
@@ -21,7 +23,10 @@ export interface IProduct {
     available: boolean
     isPublished: boolean
     category: ICategory
+    color: string
     images: IImage[]
+    averageRating: number
+    numberOfRatings: number
 }
 
 export enum ProductListPreviewType {
