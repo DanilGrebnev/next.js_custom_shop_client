@@ -1,0 +1,42 @@
+.ShopSideBar {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    border: 1px solid var(--global-palette7);
+    border-radius: var(--global-border-radius);
+    padding: 15px 20px;
+    height: fit-content;
+
+    h2 {
+        font-size: var(--font-sm);
+        margin-bottom: 9px;
+    }
+}
+
+.color-filter {
+    width: fit-content;
+}
+
+.color-filter__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter-by-price__inputs {
+    display: flex;
+    gap: 20px;
+
+    input {
+        max-width: 110px;
+        display: block;
+        padding: 8px 10px;
+    }
+}

@@ -1,0 +1,13 @@
+.SliderCardSkeleton {
+    width: 100%;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(2, auto);
+}
+
+.img {
+    grid-row: 1/3;
+}

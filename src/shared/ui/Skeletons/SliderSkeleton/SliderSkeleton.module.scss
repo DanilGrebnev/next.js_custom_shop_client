@@ -1,0 +1,52 @@
+.slider {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    overflow-x: hidden;
+}
+.slider-skeleton-wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+@media screen and (max-width: 1250px) {
+    .skeleton-item-7,
+    .skeleton-item-6 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    .skeleton-item-4,
+    .skeleton-item-5 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 639px) {
+    .skeleton-item-3 {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 349px) {
+    .skeleton-item-2 {
+        display: none;
+    }
+}
+
+// 250: {
+//     slidesPerView: 1,
+// },
+// 350: {
+//     slidesPerView: 2,
+// },
+// 640: {
+//     slidesPerView: 3,
+// },
+// 980: {
+//     slidesPerView: 5,
+// },
+// 1250: {
+//     slidesPerView: 7,
+// },

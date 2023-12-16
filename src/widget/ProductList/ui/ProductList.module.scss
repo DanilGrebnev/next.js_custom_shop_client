@@ -1,0 +1,25 @@
+.product-list {
+    flex-grow: 1;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1em;
+}
+
+.product-list__content {
+    &.cell {
+        display: grid;
+        overflow-y: auto;
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(4, auto);
+        row-gap: 30px;
+    }
+
+    &.list {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+    }
+}
