@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { ProductSchema } from '../types/ProductSchema'
+import { IProductSchema } from '../types/ProductSchema'
 
-const initialState: ProductSchema = {
+const initialState: IProductSchema = {
     amount: 0,
 }
 

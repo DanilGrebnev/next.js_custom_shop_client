@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { type CategorySchema } from '../types'
+import { type ICategorySchema } from '../types'
 import { fetchCategories } from '../services/fetchCategory'
 
-const initialState: CategorySchema = {
+const initialState: ICategorySchema = {
     category: [],
     isError: '',
     isLoading: false,

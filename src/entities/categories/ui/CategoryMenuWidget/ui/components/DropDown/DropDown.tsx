@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { Title } from '@/shared/ui/Title'
-import { Category } from '@/entities/categories/model/types'
+import { ICategory } from '@/entities/categories/model/types'
 
 import Link from 'next/link'
 import s from './DropDown.module.scss'
@@ -8,7 +8,7 @@ import s from './DropDown.module.scss'
 // import data from '@/mock/mock'
 
 interface IDropDown {
-    categories: Category[]
+    categories: ICategory[]
 }
 
 export const DropDown = memo((props: IDropDown) => {
