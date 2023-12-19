@@ -1,5 +1,5 @@
 export { categoryReducer } from './model/slice/categoriesSlice'
-export { type CategorySchema } from './model/types'
+export { type ICategorySchema } from './model/types'
 export { CategoryMenuWidget } from './ui/CategoryMenuWidget'
 export {
     getCategoryData,

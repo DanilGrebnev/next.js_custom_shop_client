@@ -1,10 +1,12 @@
-import { CategorySchema } from '@/entities/categories'
-import { ProductSchema } from '@/entities/product'
+import { ICategorySchema } from '@/entities/categories'
+import { IProductSchema } from '@/entities/product'
 import type { AxiosInstance } from 'axios'
+import { IProductListSchema } from '@/entities/productList'
 
 export interface StateSchema {
-    product: ProductSchema
-    categories: CategorySchema
+    product: IProductSchema
+    categories: ICategorySchema
+    productList: IProductListSchema
 }
 
 export interface ThunkExtraConfig {

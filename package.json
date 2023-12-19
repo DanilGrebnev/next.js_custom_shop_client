@@ -11,9 +11,11 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@emotion/cache": "^11.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/material": "^5.14.18",
+    "@mui/material-nextjs": "^5.15.0",
     "@reduxjs/toolkit": "^1.9.7",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",

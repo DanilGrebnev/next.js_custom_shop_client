@@ -5,9 +5,9 @@ import { ColorCheckBox } from '@/shared/ui/ColorCheckBox'
 import mock from '@/mock/mock'
 import clsx from 'clsx'
 
-import s from './ShopSideBar.module.scss'
+import s from './FilterSideBar.module.scss'
 
-interface IShopSideBarProps {
+interface IFilterSideBarProps {
     className?: string
 }
 
@@ -16,11 +16,11 @@ const priceData = {
     max: 250,
 }
 
-export const ShopSideBar: FC<IShopSideBarProps> = (props) => {
+export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
     const { className } = props
 
     return (
-        <div className={clsx(s.ShopSideBar, className)}>
+        <div className={clsx(s.FilterSideBar, className)}>
             <div className={clsx(s['category-filter'])}>
                 <h2>Filter By category</h2>
                 <ul className={clsx(s['category-list'], s['vertical-list'])}>
@@ -78,4 +78,4 @@ export const ShopSideBar: FC<IShopSideBarProps> = (props) => {
     )
 }
 
-ShopSideBar.displayName = 'ShopSideBar'
+FilterSideBar.displayName = 'FilterSideBar'

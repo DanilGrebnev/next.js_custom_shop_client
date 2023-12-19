@@ -1,47 +1,80 @@
 import type { Metadata } from 'next'
-import { ShopSideBar } from '@/entities/shop'
+// import { ShopSideBar } from '@/entities/shop'
 import { BreadCrumbs } from '@/shared/ui/BreadCrumbs'
-import { getAllProducts } from './api'
-import { ProductList } from '@/widget/ProductList'
 import { NavigationRoutes } from '@/app/providers/NavigationRoutes'
-import mock from '@/mock/mock'
+import { ReserveErrorComponent } from '@/shared/ui/ReserveErrorComponent'
+import { ProductList } from '@/entities/productList'
+import { FilterSideBar } from '@/entities/FilterSideBar'
 
-// import mock from '@/mock/mock'
 import clsx from 'clsx'
 import s from './page.module.scss'
-import { IProduct } from '@/app/types/Product'
+
+import mock from '@/mock/mock'
 
 export const metadata: Metadata = {
     title: 'Shop',
     description: 'Shop description',
 }
 
-const ShopPage = async () => {
-    // const products = await getAllProducts()
+// type TGetData = { offset: number; limit: number }
 
-    const products = new Array(20).fill((mock.productById as IProduct))
+// async function getData({ offset, limit }: TGetData) {
+//     const searhParams = new URLSearchParams()
 
-    return (
-        <>
-            <BreadCrumbs
-                current="Shop"
-                breadcrumbs={[
-                    { href: NavigationRoutes.main(), label: 'Home' },
-                    {
-                        href: NavigationRoutes.shop(),
-                        label: 'Shop',
-                        active: true,
-                    },
-                ]}
+//     searhParams.append('offset', offset + '')
+//     searhParams.append('limit', limit + '')
+
+//     console.log(searhParams.toString())
+
+//     const url = 'products?' + searhParams.toString()
+//     const res = await $axios.get<IShopResponse>(url.toString())
+
+//     // Добавляем хост в путь для изображений
+//     res.data.products.map((product) => {
+//         product.images.map((imageItem) => {
+//             const src = 'http://localhost:8000' + imageItem.image
+//             imageItem.image = src
+
+//             return imageItem
+//         })
+
+//         return product
+//     })
+
+//     return res.data
+// }
+
+export default async function ShopPage() {
+    try {
+        return (
+            <>
+                <BreadCrumbs
+                    current="Shop"
+                    breadcrumbs={[
+                        { href: NavigationRoutes.main(), label: 'Home' },
+                        {
+                            href: NavigationRoutes.shop(),
+                            label: 'Shop',
+                            active: true,
+                        },
+                    ]}
+                />
+                <section
+                    id="Shop-Page"
+                    className={clsx('contain', s['shop-page'])}>
+                    <FilterSideBar />
+                    <ProductList />
+                </section>
+            </>
+        )
+    } catch (err) {
+        return (
+            <ReserveErrorComponent
+                error={err}
+                componentName="Shop"
             />
-            <section
-                id="Shop-Page"
-                className={clsx('contain', s['shop-page'])}>
-                <ShopSideBar />
-                <ProductList products={products} />
-            </section>
-        </>
-    )
+        )
+    }
 }
 
-export default ShopPage
+// const products = new Array(20).fill((mock.productById as IProduct))

@@ -20,8 +20,8 @@ export interface IProduct {
     description: string
     price: number
     quantity: number
-    available: boolean
     isPublished: boolean
+    available: boolean
     category: ICategory
     color: string
     images: IImage[]

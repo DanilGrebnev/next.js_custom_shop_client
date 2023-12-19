@@ -1,3 +1,3 @@
-export interface ProductSchema {
+export interface IProductSchema {
     amount: number
 }

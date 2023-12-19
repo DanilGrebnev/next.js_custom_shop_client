@@ -1,4 +1,8 @@
 .product-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: center;
     flex-grow: 1;
 }
 
@@ -13,7 +17,7 @@
         display: grid;
         overflow-y: auto;
         grid-template-columns: repeat(6, 1fr);
-        grid-template-rows: repeat(4, auto);
+        grid-template-rows: repeat(2, auto);
         row-gap: 30px;
     }
 

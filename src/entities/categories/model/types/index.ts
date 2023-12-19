@@ -1,12 +1,12 @@
-export interface Category {
+export interface ICategory {
     id: number
     name: string
     slug: string
     image: string
 }
 
-export interface CategorySchema {
-    category: Category[]
+export interface ICategorySchema {
+    category: ICategory[]
     isLoading?: boolean
     isError?: string
 }
