@@ -12,28 +12,31 @@ import mock from '../../mock/mock'
 
 export default async function HomePage() {
     try {
-        // const homePageData = await fetchHomePageData()
+        const homePageData = await fetchHomePageData()
 
         return (
             <section id="Home-Page">
                 <TopSlider />
 
-                <FeaturedProducts products={mock.feature_product as any} />
+                <FeaturedProducts products={homePageData.featureProducts} />
 
-                <NewProducts products={mock.newProduct as any} />
+                <NewProducts products={homePageData.newProducts} />
 
                 {/* <FeedBackBlock /> */}
 
                 <BestsellerProducts
-                    products={
-                        mock.bestsellerProduct as unknown as IHomePageProducts[]
-                    }
+                    products={homePageData.bestsellerProducts}
                 />
 
-                <ShopByFeaturedCategories />
+                <ShopByFeaturedCategories
+                    categories={homePageData.featuredCategories}
+                />
             </section>
         )
     } catch (err) {
+        console.log('Ошибка из страницы компонента HomePage')
+        console.log(err)
+
         return (
             <ReserveErrorComponent
                 componentName="HomePage"

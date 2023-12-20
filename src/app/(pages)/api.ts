@@ -1,18 +1,12 @@
 import { $axios } from '@/app/API'
 import { IProduct } from '@/app/types/Product'
+import { ICategory } from '@/app/types/categoryTypes'
 
 interface HomePageData {
-    feature_products: IProduct[]
-    new_products: IProduct[]
-    bestseller_products: IProduct[]
-    featured_categories: ICategories[]
-}
-
-export interface ICategories {
-    id: number
-    name: string
-    slug: string
-    image: string
+    featureProducts: IProduct[]
+    newProducts: IProduct[]
+    bestsellerProducts: IProduct[]
+    featuredCategories: ICategory[]
 }
 
 export const fetchHomePageData = async () => {

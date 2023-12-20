@@ -5,5 +5,3 @@ export interface IHomePageProducts
         IProduct,
         'average_rating' | 'number_of_ratings' | 'category'
     > {}
-
-

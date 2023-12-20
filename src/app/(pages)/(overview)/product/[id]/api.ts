@@ -3,7 +3,7 @@ import { $axios } from '@/app/API'
 import mock from '@/mock/mock'
 
 export const getProduct = async (productId: string) => {
-    const res = await $axios.get<IProduct>(`products/${productId}/`)
+    const res = await $axios.get<IProduct>(`product/${productId}`)
     return res.data
 }
 

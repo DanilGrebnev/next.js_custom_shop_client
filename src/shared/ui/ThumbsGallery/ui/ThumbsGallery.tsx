@@ -22,6 +22,8 @@ export const ThumbsGallery = (props: IThumbsGalleryProps) => {
     const { images, alt } = props
     const [thumbsSwiper, setThumbsSwiper] = useState<any>(null)
 
+    const urlToBackend = process.env.NEXT_PUBLIC_URL_BACKEND as string
+
     return (
         <div className="thumbs-gallery">
             <Swiper
@@ -40,7 +42,7 @@ export const ThumbsGallery = (props: IThumbsGalleryProps) => {
                                 width={1000}
                                 quality={100}
                                 height={1000}
-                                src={item.image}
+                                src={urlToBackend + item.image}
                             />
                         </SwiperSlide>
                     )
@@ -63,7 +65,7 @@ export const ThumbsGallery = (props: IThumbsGalleryProps) => {
                                 width={102}
                                 height={102}
                                 quality={50}
-                                src={item.image}
+                                src={urlToBackend + item.image}
                             />
                         </SwiperSlide>
                     )

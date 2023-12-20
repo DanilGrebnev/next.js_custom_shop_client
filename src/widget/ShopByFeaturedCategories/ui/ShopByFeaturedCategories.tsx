@@ -6,17 +6,17 @@ import { getData } from '@/mock/mock'
 import { CardByFutureCategories } from '@/shared/ui/Cards'
 
 import clsx from 'clsx'
+import { ICategory } from '@/app/types/categoryTypes'
 
 interface IShopByFeaturedCategoriesProps {
     className?: string
+    categories: ICategory[]
 }
 
 export const ShopByFeaturedCategories: FC<
     IShopByFeaturedCategoriesProps
 > = async (props) => {
-    const { className } = props
-
-    const { shopByFeaturedCategories } = await getData(100)
+    const { className, categories } = props
 
     return (
         <div className={clsx('mr-top', className)}>
@@ -26,11 +26,13 @@ export const ShopByFeaturedCategories: FC<
                         style={{ background: 'transparent' }}
                         breakpoints="category-slider"
                         theme="theme2">
-                        {shopByFeaturedCategories.map((props, i) => {
+                        {categories.map((props, i) => {
                             return (
                                 <CardByFutureCategories
                                     key={i}
-                                    {...props}
+                                    image={props.image}
+                                    name={props.name}
+                                    amount={1}
                                 />
                             )
                         })}

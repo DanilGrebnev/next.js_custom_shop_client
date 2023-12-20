@@ -21,7 +21,7 @@ export const NewProducts: FC<INewProductsProps> = (props) => {
             <Slider
                 breakpoints="default"
                 theme="theme2">
-                {products.map((product, i) => {
+                {products?.map((product, i) => {
                     return (
                         <ProductCard
                             key={i}

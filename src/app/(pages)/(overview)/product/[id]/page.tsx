@@ -20,8 +20,8 @@ interface IProductPage {
 
 export const generateMetadata = async ({ params }: IProductPage) => {
     try {
-        // const product = await getProduct(params.id)
-        const product = await getProductTEST()
+        const product = await getProduct(params.id)
+        // const product = await getProductTEST()
 
         return {
             title: product.name,
@@ -39,8 +39,8 @@ export const generateMetadata = async ({ params }: IProductPage) => {
 const ProductPage = async ({ params }: IProductPage) => {
     const { id } = params
     try {
-        // const product = await getProduct(id)
-        const product = await getProductTEST()
+        const product = await getProduct(id)
+        // const product = await getProductTEST()
 
         return (
             <>
@@ -86,6 +86,8 @@ const ProductPage = async ({ params }: IProductPage) => {
             </>
         )
     } catch (err) {
+        console.log('Ошибка в запросе из страницы ProductPage')
+
         return (
             <ReserveErrorComponent
                 error={err}
