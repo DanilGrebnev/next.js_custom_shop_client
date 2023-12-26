@@ -9,6 +9,17 @@
     position: relative;
     min-height: 380px;
     overflow-x: hidden;
+    img {
+        opacity: 0;
+    }
+
+    & img:nth-child(1) {
+        opacity: 1;
+    }
+
+    & img:nth-child(2) {
+        opacity: 0;
+    }
 
     &:hover {
         .menu {

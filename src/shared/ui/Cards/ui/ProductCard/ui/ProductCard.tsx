@@ -28,8 +28,8 @@ export const ProductCard: FC<IProductCard> = (props) => {
     if (type === ProductListPreviewType.CELL) {
         return (
             <div className={clsx(s['product-card'], s.cell)}>
-                <div className={s['content-wrapper']}>
-                    <Link href={hrefToProduct}>
+                <Link href={hrefToProduct}>
+                    <div className={s['content-wrapper']}>
                         <CardPreview
                             alt={name}
                             images={images}
@@ -40,8 +40,9 @@ export const ProductCard: FC<IProductCard> = (props) => {
                         <Rating rating={rating} />
 
                         <Price price={price} />
-                    </Link>
-                </div>
+                    </div>
+                </Link>
+
                 <SideMenu className={s.menu} />
                 <CardButton className={s.button} />
             </div>

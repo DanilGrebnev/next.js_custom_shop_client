@@ -4,44 +4,16 @@ import { NewProducts } from '@/widget/NewProducts'
 import { FeedBackBlock } from '@/widget/FeedBackBlock'
 import { BestsellerProducts } from '@/widget/BestsellerProducts'
 import { ShopByFeaturedCategories } from '@/widget/ShopByFeaturedCategories'
-import { fetchHomePageData } from './api'
 import { ReserveErrorComponent } from '@/shared/ui/ReserveErrorComponent'
 import { IHomePageProducts } from '../types/HomePage'
-
+import { ClientErrorBoundary } from '@/shared/ui/ClientErrorBoundary'
 import mock from '../../mock/mock'
+import { HomePage } from '@/entities/homePage'
 
-export default async function HomePage() {
-    try {
-        const homePageData = await fetchHomePageData()
-
-        return (
-            <section id="Home-Page">
-                <TopSlider />
-
-                <FeaturedProducts products={homePageData.featureProducts} />
-
-                <NewProducts products={homePageData.newProducts} />
-
-                {/* <FeedBackBlock /> */}
-
-                <BestsellerProducts
-                    products={homePageData.bestsellerProducts}
-                />
-
-                <ShopByFeaturedCategories
-                    categories={homePageData.featuredCategories}
-                />
-            </section>
-        )
-    } catch (err) {
-        console.log('Ошибка из страницы компонента HomePage')
-        console.log(err)
-
-        return (
-            <ReserveErrorComponent
-                componentName="HomePage"
-                error={err}
-            />
-        )
-    }
+export default async function HomePages() {
+    return (
+        <ClientErrorBoundary>
+            <HomePage />
+        </ClientErrorBoundary>
+    )
 }

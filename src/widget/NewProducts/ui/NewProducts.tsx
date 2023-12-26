@@ -4,6 +4,7 @@ import { Slider } from '@/shared/ui/Slider'
 import { ProductCard } from '@/shared/ui/Cards'
 import { IProduct } from '@/app/types/Product'
 import { IHomePageProducts } from '@/app/types/HomePage'
+import clsx from 'clsx'
 // import mock from '@/mock/mock'
 
 interface INewProductsProps {
@@ -16,7 +17,7 @@ export const NewProducts: FC<INewProductsProps> = (props) => {
 
     return (
         <ContainerWithTitle
-            className={className}
+            className={clsx('mr-top', className)}
             title="New Products">
             <Slider
                 breakpoints="default"

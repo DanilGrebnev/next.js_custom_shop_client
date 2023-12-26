@@ -4,32 +4,30 @@ import { FullWidthContainer } from '@/shared/ui/Containers/FullWidthContainer/ui
 import { ContainerWithTitle } from '@/shared/ui/Containers/ContainerWithTitle'
 import { FeedBackCard } from '@/shared/ui/Cards'
 
-import clsx from 'clsx'
-
 import { getData } from '@/mock/mock'
+import { IComment } from '@/app/types/comments'
 
 interface IFeedBackBlockProps {
-    className?: string
+    comments: IComment[]
 }
 
 export const FeedBackBlock: FC<IFeedBackBlockProps> = async (props) => {
-    const { className } = props
-
-    const { fakeCustomers } = await getData(100)
+    const { comments } = props
 
     return (
-        <div className={clsx(className, 'mr-top')}>
+        <div
+            id="Feed-back block"
+            className={'mr-top'}>
             <FullWidthContainer>
                 <ContainerWithTitle title="See What Our Customers Says">
                     <Slider
                         breakpoints="feedback-slider"
                         spaceBetween={20}
                         theme="theme2">
-                        {fakeCustomers.map(({ src, ...props }, i) => {
+                        {comments.map(({ ...props }, i) => {
                             return (
                                 <FeedBackCard
                                     key={i}
-                                    img={src}
                                     {...props}
                                 />
                             )

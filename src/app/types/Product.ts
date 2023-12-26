@@ -1,13 +1,7 @@
 import { StaticImageData } from 'next/image'
+import { ICategory } from '@/app/types/category'
 
 export interface IImage {
-    image: string | StaticImageData
-}
-
-export interface ICategory {
-    id: number
-    name: string
-    slug: string
     image: string | StaticImageData
 }
 
@@ -22,7 +16,7 @@ export interface IProduct {
     quantity: number
     isPublished: boolean
     available: boolean
-    category: ICategory
+    category: ICategory[]
     color: string
     images: IImage[]
     averageRating: number

@@ -1,9 +1,4 @@
-export interface ICategory {
-    id: number
-    name: string
-    slug: string
-    image: string
-}
+import { ICategory } from '@/app/types/category'
 
 export interface ICategorySchema {
     category: ICategory[]

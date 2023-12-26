@@ -6,7 +6,7 @@ import { getData } from '@/mock/mock'
 import { CardByFutureCategories } from '@/shared/ui/Cards'
 
 import clsx from 'clsx'
-import { ICategory } from '@/app/types/categoryTypes'
+import { ICategory } from '@/app/types/category'
 
 interface IShopByFeaturedCategoriesProps {
     className?: string
