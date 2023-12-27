@@ -4,10 +4,14 @@ import { CheckBox } from '@/shared/ui/CheckBox'
 import { ColorCheckBox } from '@/shared/ui/ColorCheckBox'
 import { useAppDispatch } from '@/shared/hooks'
 import { fetchSidebarFilters } from '../model/services/fetchSidebarFilters'
+import { useAppSelector } from '@/shared/hooks'
+import { v4 } from 'uuid'
 import mock from '@/mock/mock'
 import clsx from 'clsx'
 
 import s from './FilterSideBar.module.scss'
+import { FilterSideBarSelector } from '../model/selectors/filterSideBarSelector'
+import { getClass } from '../lib/getClass'
 
 interface IFilterSideBarProps {
     className?: string
@@ -21,6 +25,7 @@ const priceData = {
 export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
     const { className } = props
     const dispatch = useAppDispatch()
+    const filters = useAppSelector(FilterSideBarSelector.getFilters)
 
     useEffect(() => {
         dispatch(fetchSidebarFilters())
@@ -28,7 +33,36 @@ export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
 
     return (
         <div className={clsx(s.FilterSideBar, className)}>
-            <div className={clsx(s['category-filter'])}>
+            {filters?.map((filterItem) => {
+                console.log(filterItem)
+                return (
+                    <div key={v4()}>
+                        <h2>{filterItem.label}</h2>
+                        <ul className={getClass(filterItem.code)}>
+                            {filterItem?.choices?.map((choicesItem) => {
+                                return (
+                                    <li key={v4()}>
+                                        {filterItem.code === 'colors' ? (
+                                            <ColorCheckBox
+                                                color={choicesItem.label}
+                                            />
+                                        ) : (
+                                            <CheckBox
+                                                label={choicesItem.label}
+                                            />
+                                        )}
+                                    </li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                )
+            })}
+        </div>
+    )
+    return (
+        <div className={clsx(s.FilterSideBar, className)}>
+            <div>
                 <h2>Filter By category</h2>
                 <ul className={clsx(s['category-list'], s['vertical-list'])}>
                     {mock.categoryFilter.map(({ name }, i) => {

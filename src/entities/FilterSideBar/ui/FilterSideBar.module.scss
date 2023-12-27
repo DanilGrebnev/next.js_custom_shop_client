@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: 2em;
+    max-width: 240px;
+    width: 100%;
 
     border: 1px solid var(--global-palette7);
     border-radius: var(--global-border-radius);
@@ -9,13 +11,16 @@
     height: fit-content;
 
     h2 {
-        font-size: var(--font-sm);
+        font-size: var(--font-size-4);
         margin-bottom: 9px;
     }
 }
 
 .color-filter {
     width: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .color-filter__list {
