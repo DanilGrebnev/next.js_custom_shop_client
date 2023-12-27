@@ -1,3 +1,5 @@
 export { type IProductListSchema } from './model/types/productListSchema'
 export { productListReducer } from './model/slice/productListSlice'
 export { DynamicProductList as ProductList } from './ui/ProductList/DynamicProductList'
+export { ProductListSelectors } from './model/selectors/productListSelectors'
+export { fetchProductList } from './model/services/productListServices'

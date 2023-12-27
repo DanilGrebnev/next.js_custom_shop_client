@@ -5,35 +5,18 @@ import { useAppSelector, useAppDispatch } from '@/shared/hooks'
 import { fetchProductList } from '../../model/services/productListServices'
 import { ProductCard } from '@/shared/ui/Cards'
 import { Pagination } from '@/shared/ui/Pagination'
-import { getProducts } from '../../model/selectors/getProducts'
-import { getTotalCount } from '../../model/selectors/getTotalCount'
+import { ProductListSelectors } from '../../model/selectors/productListSelectors'
+import { ProductListPagination } from '@/entities/productListPagination'
 
 import clsx from 'clsx'
 import s from './ProductList.module.scss'
 
 const ProductList = () => {
-    const products = useAppSelector(getProducts)
-    const productsAmount = useAppSelector(getTotalCount)
+    const products = useAppSelector(ProductListSelectors.getProducts)
+    const productsAmount = useAppSelector(ProductListSelectors.getTotalCount)
     const dispatch = useAppDispatch()
 
     const previewOnPage = 8
-
-    function getPagesAmount(previewItems: number) {
-        const pagesAmount = productsAmount / previewItems
-
-        return pagesAmount % 0 !== 1 ? Math.ceil(pagesAmount) : pagesAmount
-    }
-
-    const onChange = (pageNumber: number) => {
-        const offset = pageNumber === 1 ? 0 : (pageNumber - 1) * previewOnPage
-
-        dispatch(
-            fetchProductList({
-                limit: previewOnPage,
-                offset,
-            })
-        )
-    }
 
     useEffect(() => {
         dispatch(fetchProductList({ limit: previewOnPage, offset: 0 }))
@@ -68,12 +51,7 @@ const ProductList = () => {
                     )
                 })}
             </div>
-            <Pagination
-                count={getPagesAmount(previewOnPage)}
-                onChange={(_, value) => {
-                    onChange(value)
-                }}
-            />
+            <ProductListPagination />
         </div>
     )
 }

@@ -1,7 +1,9 @@
-import { FC } from 'react'
+'use client'
+import { FC, useEffect } from 'react'
 import { CheckBox } from '@/shared/ui/CheckBox'
 import { ColorCheckBox } from '@/shared/ui/ColorCheckBox'
-
+import { useAppDispatch } from '@/shared/hooks'
+import { fetchSidebarFilters } from '../model/services/fetchSidebarFilters'
 import mock from '@/mock/mock'
 import clsx from 'clsx'
 
@@ -18,6 +20,11 @@ const priceData = {
 
 export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
     const { className } = props
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        dispatch(fetchSidebarFilters())
+    }, [])
 
     return (
         <div className={clsx(s.FilterSideBar, className)}>

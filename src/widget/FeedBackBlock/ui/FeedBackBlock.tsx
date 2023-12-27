@@ -11,7 +11,7 @@ interface IFeedBackBlockProps {
     comments: IComment[]
 }
 
-export const FeedBackBlock: FC<IFeedBackBlockProps> = async (props) => {
+export const FeedBackBlock: FC<IFeedBackBlockProps> = (props) => {
     const { comments } = props
 
     return (

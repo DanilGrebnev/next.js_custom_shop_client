@@ -1,4 +1,5 @@
 'use client'
+import { ErrorPage } from '../../ErrorPage'
 import React, { Component, ErrorInfo, ReactNode } from 'react'
 
 interface Props {
@@ -25,7 +26,7 @@ export class ClientErrorBoundary extends Component<Props, State> {
 
     public render() {
         if (this.state.hasError) {
-            return <h1>Произошла непредвиденная ошибка</h1>
+            return <ErrorPage error={this.state.hasError}></ErrorPage>
         }
 
         return this.props.children
