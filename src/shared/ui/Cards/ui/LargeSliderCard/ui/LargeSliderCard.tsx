@@ -8,16 +8,19 @@ import s from './LargeSliderCard.module.scss'
 
 interface ILargeSliderCardProps {
     className?: string
+    src: any
 }
 
 export const LargeSliderCard: FC<ILargeSliderCardProps> = (props) => {
-    const { className } = props
+    const { className, src } = props
 
     return (
         <div className={clsx(s.LargeSliderCard, className)}>
             <Image
                 alt="Banner"
-                src={Banner1}
+                width={1600}
+                height={480}
+                src={src}
             />
         </div>
     )

@@ -3,11 +3,14 @@ import { IHomePageSchema } from '../schema/homePageSchema'
 import { fetchHomePageData } from '../services/fetchHomePageData'
 
 const initialState: IHomePageSchema = {
-    bestsellerProducts: [],
-    featuredCategories: [],
-    featureProducts: [],
-    newProducts: [],
-    comments: [],
+    homePageData: {
+        bestsellerProducts: [],
+        featuredCategories: [],
+        featureProducts: [],
+        newProducts: [],
+        comments: [],
+        sliderImages: [],
+    },
     loading: true,
     error: {},
 }
@@ -19,11 +22,7 @@ const homePageSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(fetchHomePageData.fulfilled, (state, action) => {
-                state.bestsellerProducts = action.payload.bestsellerProducts
-                state.featureProducts = action.payload.featureProducts
-                state.newProducts = action.payload.newProducts
-                state.featuredCategories = action.payload.featuredCategories
-                state.comments = action.payload.comments
+                state.homePageData = action.payload
 
                 state.loading = false
             })

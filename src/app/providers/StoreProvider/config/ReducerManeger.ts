@@ -1,3 +1,4 @@
+import { productSearchInputReducer } from '@/entities/ProductSearchInput/model/slice/productSearchInputSlice'
 import { categoryReducer } from '@/entities/categories'
 import { filterSidebarReducer } from '@/entities/filterSideBar'
 import { homePageReducer } from '@/entities/homePage'
@@ -14,4 +15,5 @@ export const reducerManager = {
     productPage: productPageReducer,
     productListPagination: productListPaginationReducer,
     filterSideBar: filterSidebarReducer,
+    productSearchInput: productSearchInputReducer,
 }

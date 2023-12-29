@@ -34,7 +34,6 @@ export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
     return (
         <div className={clsx(s.FilterSideBar, className)}>
             {filters?.map((filterItem) => {
-                console.log(filterItem)
                 return (
                     <div key={v4()}>
                         <h2>{filterItem.label}</h2>
@@ -44,11 +43,15 @@ export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
                                     <li key={v4()}>
                                         {filterItem.code === 'colors' ? (
                                             <ColorCheckBox
+                                                name={filterItem.code}
                                                 color={choicesItem.label}
+                                                value={choicesItem.value}
                                             />
                                         ) : (
                                             <CheckBox
+                                                name={filterItem.code}
                                                 label={choicesItem.label}
+                                                value={choicesItem.value}
                                             />
                                         )}
                                     </li>
@@ -58,63 +61,6 @@ export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
                     </div>
                 )
             })}
-        </div>
-    )
-    return (
-        <div className={clsx(s.FilterSideBar, className)}>
-            <div>
-                <h2>Filter By category</h2>
-                <ul className={clsx(s['category-list'], s['vertical-list'])}>
-                    {mock.categoryFilter.map(({ name }, i) => {
-                        return (
-                            <li key={name}>
-                                <CheckBox label={name} />
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>
-
-            <div className={s['color-filter']}>
-                <h2>Filter By Color</h2>
-                <ul className={s['color-filter__list']}>
-                    {mock.colorFilter.map((props, i) => {
-                        return (
-                            <li key={i}>
-                                <ColorCheckBox color={props.color} />
-                            </li>
-                        )
-                    })}
-                </ul>
-            </div>
-
-            <div className={clsx(s['size-filter'])}>
-                <h2>Filter By Size</h2>
-
-                <ul className={s['vertical-list']}>
-                    <CheckBox label="Large" />
-                    <CheckBox label="Medium" />
-                    <CheckBox label="Small" />
-                </ul>
-            </div>
-
-            <div className={clsx(s['price-filter'])}>
-                <h2>Filter By Price</h2>
-                <div className={s['filter-by-price__inputs']}>
-                    <input
-                        defaultValue={priceData.min}
-                        max={priceData.max}
-                        min={priceData.min}
-                        type="number"
-                    />
-                    <input
-                        defaultValue={priceData.max}
-                        min={priceData.min}
-                        max={priceData.max}
-                        type="number"
-                    />
-                </div>
-            </div>
         </div>
     )
 }

@@ -1,6 +1,6 @@
 import { IProduct } from '@/app/types/Product'
 
 export interface IProductListSchema {
-    total_count: number
+    totalCount: number
     products: IProduct[]
 }

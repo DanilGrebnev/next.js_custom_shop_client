@@ -18,17 +18,18 @@ export const fetchProductList = createAsyncThunk(
         const response = await $axios.get<IProductListSchema>(
             'products?' + searchParams
         )
+
         response.data.products.map((product) =>
-            product.images.map(
-                (image) =>
-                    (image.image =
-                        (process.env.NEXT_PUBLIC_URL_BACKEND as string) +
-                        image.image)
-            )
+            product.images.map((imageItem) => {
+                const backendUrl = process.env.NEXT_PUBLIC_URL_BACKEND as string
+                const src = backendUrl + imageItem.image
+
+                imageItem.image = src
+
+                return imageItem
+            })
         )
 
         return response.data
     }
 )
-
-export const fetchProductListWithDispatch = () => {}

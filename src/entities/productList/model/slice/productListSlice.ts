@@ -3,7 +3,7 @@ import { fetchProductList } from '../services/productListServices'
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: IProductListSchema = {
-    total_count: 0,
+    totalCount: 0,
     products: [],
 }
 
@@ -15,8 +15,8 @@ export const productListSlice = createSlice({
         return builder
             .addCase(fetchProductList.fulfilled, (state, action) => {
                 state.products = action.payload.products
-                if (state.total_count !== action.payload.total_count) {
-                    state.total_count = action.payload.total_count
+                if (state.totalCount !== action.payload.totalCount) {
+                    state.totalCount = action.payload.totalCount
                 }
             })
             .addCase(fetchProductList.rejected, (state, action) => {

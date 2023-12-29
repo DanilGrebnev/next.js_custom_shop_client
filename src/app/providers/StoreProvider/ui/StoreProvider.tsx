@@ -7,7 +7,7 @@ interface IStoreProvider {
     children: ReactNode
 }
 
-const StoreProvider = ({ children }: IStoreProvider) => {
+export const StoreProvider = ({ children }: IStoreProvider) => {
     const storeRef = useRef<AppStore>()
     if (!storeRef.current) {
         // Create the store instance the first time this renders
@@ -17,4 +17,4 @@ const StoreProvider = ({ children }: IStoreProvider) => {
     return <Provider store={storeRef.current}>{children}</Provider>
 }
 
-export default StoreProvider
+

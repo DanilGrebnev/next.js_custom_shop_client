@@ -34,7 +34,7 @@ export const HomePage = () => {
 
     return (
         <section id="Home-Page">
-            <TopSlider />
+            <TopSlider sliderImages={homePageData?.sliderImages} />
 
             <FeaturedProducts products={homePageData?.featureProducts} />
 

@@ -1,26 +1,28 @@
-import { FC, CSSProperties, InputHTMLAttributes } from 'react'
+import { FC, ChangeEvent } from 'react'
 import clsx from 'clsx'
 import s from './CheckBox.module.scss'
 
-interface ICheckBoxProps extends InputHTMLAttributes<HTMLInputElement> {
+interface ICheckBoxProps {
     className?: string
     label: string
-    style?: CSSProperties
+    name: string
+    value: string
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
 export const CheckBox: FC<ICheckBoxProps> = (props) => {
-    const { className, style, label, ...inputProps } = props
+    const { className, name, value, onChange, label } = props
 
     return (
-        <div className={clsx(s.CheckBox, className)}>
-            <label style={style}>
-                <input
-                    {...inputProps}
-                    type="checkbox"
-                />
-                <a>{label}</a>
-            </label>
-        </div>
+        <label className={clsx(s.CheckBox, className)}>
+            <input
+                name={name}
+                value={value}
+                onChange={onChange}
+                type="checkbox"
+            />
+            <a>{label}</a>
+        </label>
     )
 }
 

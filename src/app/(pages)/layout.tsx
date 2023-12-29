@@ -4,7 +4,7 @@ import { Inter } from 'next/font/google'
 import { Header } from '@/widget/Header'
 import { Footer } from '@/widget/Footer/ui/Footer'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
-import StoreProvider from '../providers/StoreProvider'
+import { StoreProvider } from '../providers/StoreProvider'
 
 import '../styles/globals.scss'
 

@@ -6,6 +6,6 @@ export class ProductListSelectors {
     }
 
     static getTotalCount(state: StateSchema) {
-        return state.productList.total_count
+        return state.productList.totalCount
     }
 }

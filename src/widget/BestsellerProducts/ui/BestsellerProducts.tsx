@@ -1,7 +1,6 @@
 import { ContainerWithTitle } from '@/shared/ui/Containers/ContainerWithTitle'
 import { Slider } from '@/shared/ui/Slider'
 import { ProductCard } from '@/shared/ui/Cards'
-import { IProduct } from '@/app/types/Product'
 
 import clsx from 'clsx'
 import { IHomePageProducts } from '@/app/types/HomePage'

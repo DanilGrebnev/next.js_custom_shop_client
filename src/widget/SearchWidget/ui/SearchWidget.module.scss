@@ -1,13 +1,4 @@
 .search-widget {
     display: flex;
-
-    & input {
-        border-radius: 5px 0 0 5px;
-        flex-grow: 1;
-        border: 3px solid #cccccc;
-        border-right: none;
-        padding: 6px 15px;
-        font-size: 100%;
-        font-weight: 400;
-    }
+    position: relative;
 }

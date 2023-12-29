@@ -1,24 +1,28 @@
 'use client'
-import { FC, InputHTMLAttributes, CSSProperties } from 'react'
+
+import { FC, InputHTMLAttributes, CSSProperties, ChangeEvent } from 'react'
 import CheckMarkIcon from '/public/static/icons/check-mark.svg'
-import clsx from 'clsx'
 import s from './ColorCheckBox.module.scss'
 
-interface IColorCheckBoxProps extends InputHTMLAttributes<HTMLInputElement> {
-    className?: string
+interface IColorCheckBoxProps {
     color?: string
+    name: string
+    onChange?: (e: ChangeEvent<HTMLInputElement>) => void
+    value: string
 }
 
 export const ColorCheckBox: FC<IColorCheckBoxProps> = (props) => {
-    const { color, className, ...inputProps } = props
+    const { color, onChange, value, name } = props
 
     return (
         <label
-            style={{ background: color }}
-            className={clsx(s.ColorCheckBox, className)}>
+            className={s.ColorCheckBox}
+            style={{ background: color }}>
             <input
-                {...inputProps}
+                value={value}
+                name={name}
                 type="checkbox"
+                onChange={onChange}
             />
             <div className={s.circle}></div>
 

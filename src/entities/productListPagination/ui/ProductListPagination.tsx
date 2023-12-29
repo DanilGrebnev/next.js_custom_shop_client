@@ -16,12 +16,13 @@ export const ProductListPagination: FC<IProductListPaginationProps> = ({
     className,
 }) => {
     const dispatch = useAppDispatch()
-    const productsAmount = useAppSelector(ProductListSelectors.getTotalCount)
+    // totalCount - Количество товаров, находящееся в productList
+    const totalCount = useAppSelector(ProductListSelectors.getTotalCount)
     const previewItemsOnPage = useAppSelector(getPreviewItemsOnPage)
 
     const pagesAmount = calculatePagesAmount({
         previewItemsOnPage,
-        productsAmount,
+        productsAmount: totalCount,
     })
 
     const onChange = (pageNumber: number) => {

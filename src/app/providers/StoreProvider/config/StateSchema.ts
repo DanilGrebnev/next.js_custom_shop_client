@@ -6,6 +6,7 @@ import { IProductPageSchema } from '@/entities/productPage'
 import { IProductListPaginationSchema } from '@/entities/productListPagination'
 import { IFilterSideBarSchema } from '@/entities/filterSideBar'
 import type { AxiosInstance } from 'axios'
+import { IProductSearchInputSchema } from '@/entities/ProductSearchInput'
 
 export interface StateSchema {
     product: IProductSchema
@@ -15,6 +16,7 @@ export interface StateSchema {
     productPage: IProductPageSchema
     productListPagination: IProductListPaginationSchema
     filterSideBar: IFilterSideBarSchema
+    productSearchInput: IProductSearchInputSchema
 }
 
 export interface ThunkExtraConfig {

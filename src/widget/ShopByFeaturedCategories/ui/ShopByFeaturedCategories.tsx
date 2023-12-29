@@ -1,3 +1,4 @@
+'use client'
 import { FC } from 'react'
 import { Slider } from '@/shared/ui/Slider'
 import { FullWidthContainer } from '@/shared/ui/Containers/FullWidthContainer'
@@ -16,10 +17,10 @@ interface IShopByFeaturedCategoriesProps {
 export const ShopByFeaturedCategories: FC<
     IShopByFeaturedCategoriesProps
 > = async (props) => {
-    const { className, categories } = props
+    const { categories } = props
 
     return (
-        <div className={clsx('mr-top', className)}>
+        <div className={'mr-top'}>
             <FullWidthContainer>
                 <ContainerWithTitle title="Shop by Featured Categories">
                     <Slider
