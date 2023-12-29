@@ -32,10 +32,14 @@ export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
     }, [])
 
     return (
-        <div className={clsx(s.FilterSideBar, className)}>
+        <div
+            id="Filter-Sidebar"
+            className={clsx(s.FilterSideBar, className)}>
             {filters?.map((filterItem) => {
                 return (
-                    <div key={v4()}>
+                    <div
+                        id={'Filter-Sidebar__' + filterItem.code}
+                        key={v4()}>
                         <h2>{filterItem.label}</h2>
                         <ul className={getClass(filterItem.code)}>
                             {filterItem?.choices?.map((choicesItem) => {
