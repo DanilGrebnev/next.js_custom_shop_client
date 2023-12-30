@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import type { PayloadAction } from '@reduxjs/toolkit'
 
 const initialState = {
     url: '',
@@ -8,7 +7,11 @@ const initialState = {
 export const searchProductUrlSlice = createSlice({
     name: 'searchProductUrl',
     initialState,
-    reducers: {},
+    reducers: {
+        setUrl(state, action) {
+            state.url = action.payload
+        },
+    },
 })
 
 export const searchProductUrlReducer = searchProductUrlSlice.reducer
