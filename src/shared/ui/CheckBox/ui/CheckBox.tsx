@@ -1,16 +1,16 @@
-import { FC, ChangeEvent } from 'react'
+import { FC, ChangeEvent, memo, ReactNode } from 'react'
 import clsx from 'clsx'
 import s from './CheckBox.module.scss'
 
 interface ICheckBoxProps {
     className?: string
-    label: string
+    label: ReactNode
     name: string
     value: string
     onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-export const CheckBox: FC<ICheckBoxProps> = (props) => {
+export const CheckBox: FC<ICheckBoxProps> = memo((props) => {
     const { className, name, value, onChange, label } = props
 
     return (
@@ -24,6 +24,6 @@ export const CheckBox: FC<ICheckBoxProps> = (props) => {
             <a>{label}</a>
         </label>
     )
-}
+})
 
 CheckBox.displayName = 'CheckBox'

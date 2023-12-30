@@ -1,13 +1,13 @@
-import { ICategorySchema } from '@/entities/categories'
-import { IProductSchema } from '@/entities/product'
-import { IProductListSchema } from '@/entities/productList'
-import { IHomePageSchema } from '@/entities/homePage'
-import { IProductPageSchema } from '@/entities/productPage'
-import { IProductListPaginationSchema } from '@/entities/productListPagination'
-import { IFilterSideBarSchema } from '@/entities/filterSideBar'
-import type { AxiosInstance } from 'axios'
-import { IProductSearchInputSchema } from '@/entities/ProductSearchInput'
-import { ISearchProductUrlSchema } from '@/entities/searchProductUrl'
+import { type ICategorySchema } from '@/entities/categories'
+import { type IProductSchema } from '@/entities/product'
+import { type IProductListSchema } from '@/entities/productList'
+import { type IHomePageSchema } from '@/entities/homePage'
+import { type IProductPageSchema } from '@/entities/productPage'
+import { type IProductListPaginationSchema } from '@/entities/productListPagination'
+import { type IFilterSideBarSchema } from '@/entities/filterSideBar'
+import { type AxiosInstance } from 'axios'
+import { type IProductSearchInputSchema } from '@/entities/ProductSearchInput'
+import { type ISearchProductParamsSchema } from '@/entities/searchProductParams'
 
 export interface StateSchema {
     product: IProductSchema
@@ -18,7 +18,7 @@ export interface StateSchema {
     productListPagination: IProductListPaginationSchema
     filterSideBar: IFilterSideBarSchema
     productSearchInput: IProductSearchInputSchema
-    searchProductUrl: ISearchProductUrlSchema
+    searchProductParams: ISearchProductParamsSchema
 }
 
 export interface ThunkExtraConfig {

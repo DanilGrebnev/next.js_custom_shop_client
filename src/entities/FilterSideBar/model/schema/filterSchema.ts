@@ -3,7 +3,7 @@ interface FilterItemChoices {
     value: string
 }
 
-interface FilterItem {
+export interface FilterItem {
     code: string
     label: string
     type: 'multiple_choices' | 'number' | 'choices'

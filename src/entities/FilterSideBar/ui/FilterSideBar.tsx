@@ -1,17 +1,31 @@
 'use client'
-import { FC, useEffect } from 'react'
+
+import {
+    ChangeEvent,
+    FC,
+    useCallback,
+    useEffect,
+    useMemo,
+    useState,
+} from 'react'
 import { CheckBox } from '@/shared/ui/CheckBox'
 import { ColorCheckBox } from '@/shared/ui/ColorCheckBox'
-import { useAppDispatch } from '@/shared/hooks'
 import { fetchSidebarFilters } from '../model/services/fetchSidebarFilters'
 import { useAppSelector } from '@/shared/hooks'
-import { v4 } from 'uuid'
-import mock from '@/mock/mock'
-import clsx from 'clsx'
-
-import s from './FilterSideBar.module.scss'
+import { useAppDispatch } from '@/shared/hooks'
 import { FilterSideBarSelector } from '../model/selectors/filterSideBarSelector'
 import { getClass } from '../lib/getClass'
+import { Rating } from '@/shared/ui/Rating'
+import { FilterList } from './components/FilterList/FilterList'
+import {
+    getSearchProductParams,
+    searchProductParamsActions,
+} from '@/entities/searchProductParams'
+import { v4 } from 'uuid'
+
+// import mock from '@/mock/mock'
+import clsx from 'clsx'
+import s from './FilterSideBar.module.scss'
 
 interface IFilterSideBarProps {
     className?: string
@@ -24,47 +38,39 @@ const priceData = {
 
 export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
     const { className } = props
-    const dispatch = useAppDispatch()
     const filters = useAppSelector(FilterSideBarSelector.getFilters)
+    const searchParams = useAppSelector(getSearchProductParams)
+
+    const dispatch = useAppDispatch()
 
     useEffect(() => {
         dispatch(fetchSidebarFilters())
+    }, [])
+
+    let usp = new URLSearchParams(searchParams)
+
+    const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value
+        const name = e.target.name
+
+        if (e.target.checked) {
+            usp.append(name, value)
+        } else {
+            // Таким образом удаляем нужную пару ключ=значение из usp
+            const updateUsp = usp.toString().replace(name + '=' + value, '')
+            usp = new URLSearchParams(updateUsp)
+        }
+        dispatch(searchProductParamsActions.setUrl(usp.toString()))
     }, [])
 
     return (
         <div
             id="Filter-Sidebar"
             className={clsx(s.FilterSideBar, className)}>
-            {filters?.map((filterItem) => {
-                return (
-                    <div
-                        id={'Filter-Sidebar__' + filterItem.code}
-                        key={v4()}>
-                        <h2>{filterItem.label}</h2>
-                        <ul className={getClass(filterItem.code)}>
-                            {filterItem?.choices?.map((choicesItem) => {
-                                return (
-                                    <li key={v4()}>
-                                        {filterItem.code === 'colors' ? (
-                                            <ColorCheckBox
-                                                name={filterItem.code}
-                                                color={choicesItem.label}
-                                                value={choicesItem.value}
-                                            />
-                                        ) : (
-                                            <CheckBox
-                                                name={filterItem.code}
-                                                label={choicesItem.label}
-                                                value={choicesItem.value}
-                                            />
-                                        )}
-                                    </li>
-                                )
-                            })}
-                        </ul>
-                    </div>
-                )
-            })}
+            <FilterList
+                onChange={onChange}
+                filters={filters}
+            />
         </div>
     )
 }
