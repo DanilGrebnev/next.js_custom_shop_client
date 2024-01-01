@@ -1,5 +1,6 @@
 import { Button } from '@/shared/ui/Button'
-import { ProductSearchInput } from '@/entities/ProductSearchInput'
+import { ProductSearchInput } from '@/entities/productSearchInput'
+
 import s from './SearchWidget.module.scss'
 
 export const SearchWidget = () => {

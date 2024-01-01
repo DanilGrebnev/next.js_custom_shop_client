@@ -21,7 +21,7 @@ export const CheckBox: FC<ICheckBoxProps> = memo((props) => {
                 onChange={onChange}
                 type="checkbox"
             />
-            <a>{label}</a>
+            <p>{label}</p>
         </label>
     )
 })

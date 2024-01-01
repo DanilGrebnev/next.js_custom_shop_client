@@ -1,6 +1,5 @@
 import { $axios } from '@/app/API'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { IProduct } from '@/app/types/Product'
 import { IProductSearchInputSchema } from '../schema/productSearchInputSchema'
 
 type Response = Omit<IProductSearchInputSchema, 'loading' | 'error'>

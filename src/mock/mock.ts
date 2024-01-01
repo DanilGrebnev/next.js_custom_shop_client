@@ -55,7 +55,9 @@ import product7 from '/public/mock/images/product7.jpg'
 import product8 from '/public/mock/images/product8.jpg'
 import product9 from '/public/mock/images/product9.jpg'
 
-import { ICategory, IImage } from '@/app/types/Product'
+import { IImage } from '@/app/types/Product'
+
+import { ICategory } from '@/app/types/category'
 
 export const data = {
     sideBarMenu: [

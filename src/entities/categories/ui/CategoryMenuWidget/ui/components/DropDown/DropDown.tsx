@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import { Title } from '@/shared/ui/Title'
-import { ICategory } from '@/entities/categories/model/types'
+import { ICategory } from '@/app/types/category'
 
 import Link from 'next/link'
 import s from './DropDown.module.scss'

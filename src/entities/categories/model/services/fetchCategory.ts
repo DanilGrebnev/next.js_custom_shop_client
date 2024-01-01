@@ -2,7 +2,7 @@ import { ThunkApiConfig } from '@/app/providers/StoreProvider'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { GetThunkAPI } from '@reduxjs/toolkit/dist/createAsyncThunk'
 import { $axios } from '@/app/API'
-import { ICategory } from '../types'
+import { ICategory } from '@/app/types/category'
 
 export const fetchCategories = createAsyncThunk(
     'categories/fetchCategories',

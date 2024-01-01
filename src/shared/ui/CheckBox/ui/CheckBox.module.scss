@@ -3,4 +3,9 @@
     width: 100%;
     gap: 10px;
     font-size: var(--font-s);
+
+    p,
+    input {
+        cursor: pointer;
+    }
 }

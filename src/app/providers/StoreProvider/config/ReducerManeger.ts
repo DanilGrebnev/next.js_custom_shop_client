@@ -1,4 +1,4 @@
-import { productSearchInputReducer } from '@/entities/ProductSearchInput/model/slice/productSearchInputSlice'
+import { productSearchInputReducer } from '@/entities/productSearchInput/model/slice/productSearchInputSlice'
 import { categoryReducer } from '@/entities/categories'
 import { filterSidebarReducer } from '@/entities/filterSideBar'
 import { homePageReducer } from '@/entities/homePage'
