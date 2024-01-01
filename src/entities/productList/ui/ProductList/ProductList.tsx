@@ -19,7 +19,7 @@ const ProductList = () => {
     const previewOnPage = 8
 
     useEffect(() => {
-        dispatch(fetchProductList({ limit: previewOnPage, offset: 0 }))
+        dispatch(fetchProductList())
     }, [])
 
     return (

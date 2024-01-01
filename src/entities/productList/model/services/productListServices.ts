@@ -1,6 +1,7 @@
 import { $axios } from '@/app/API'
 import { IProductListSchema } from '../types/productListSchema'
 import { createAsyncThunk } from '@reduxjs/toolkit'
+import { StateSchema } from '@/app/providers/StoreProvider'
 
 interface IFetchProductList {
     offset: number
@@ -9,14 +10,15 @@ interface IFetchProductList {
 
 export const fetchProductList = createAsyncThunk(
     'users/fetchByIdStatus',
-    async ({ offset, limit }: IFetchProductList) => {
-        const searchParams = new URLSearchParams()
+    async (_, thunkAPI) => {
+        const { getState } = thunkAPI
 
-        searchParams.set('offset', offset + '')
-        searchParams.set('limit', limit + '')
+        const state = getState() as StateSchema
 
+        const usp = new URLSearchParams(state.searchProductParams.usp)
+        console.log(usp.toString())
         const response = await $axios.get<IProductListSchema>(
-            'products?' + searchParams
+            'products?' + usp.toString()
         )
 
         response.data.products.map((product) =>
