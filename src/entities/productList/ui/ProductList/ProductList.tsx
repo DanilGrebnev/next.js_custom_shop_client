@@ -7,7 +7,7 @@ import { ProductCard } from '@/shared/ui/Cards'
 import { Pagination } from '@/shared/ui/Pagination'
 import { ProductListSelectors } from '../../model/selectors/productListSelectors'
 import { ProductListPagination } from '@/entities/productListPagination'
-import { ProductListSkeleton, SliderCardSkeleton } from '@/shared/ui/Skeletons'
+import { ProductListSkeleton, ProductCardSkeleton } from '@/shared/ui/Skeletons'
 import { CreateArrayAndFill } from '@/shared/HOC/CreateArrayAndFill'
 
 import clsx from 'clsx'
