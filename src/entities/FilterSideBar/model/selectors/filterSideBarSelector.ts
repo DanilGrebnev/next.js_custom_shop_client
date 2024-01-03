@@ -6,9 +6,9 @@ export class FilterSideBarSelector {
     }
 
     static getIsLoading(state: StateSchema) {
-        state.filterSideBar.loading
+        return state.filterSideBar.loading
     }
     static getError(state: StateSchema) {
-        state.filterSideBar.error
+        return state.filterSideBar.error
     }
 }

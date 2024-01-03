@@ -1,28 +1,16 @@
 'use client'
 
-import {
-    ChangeEvent,
-    FC,
-    useCallback,
-    useEffect,
-    useMemo,
-    useState,
-} from 'react'
-import { CheckBox } from '@/shared/ui/CheckBox'
-import { ColorCheckBox } from '@/shared/ui/ColorCheckBox'
+import { ChangeEvent, FC, useCallback, useEffect } from 'react'
 import { fetchSidebarFilters } from '../model/services/fetchSidebarFilters'
 import { useAppSelector } from '@/shared/hooks'
 import { useAppDispatch } from '@/shared/hooks'
 import { FilterSideBarSelector } from '../model/selectors/filterSideBarSelector'
-import { getClass } from '../lib/getClass'
-import { Rating } from '@/shared/ui/Rating'
 import { FilterList } from './components/FilterList/FilterList'
 import {
     getSearchProductParams,
     searchProductParamsActions,
 } from '@/entities/searchProductParams'
-import { v4 } from 'uuid'
-
+import { FilterSideBarSkeleton } from '@/shared/ui/Skeletons/FilterSideBarSkeleton'
 // import mock from '@/mock/mock'
 import clsx from 'clsx'
 import s from './FilterSideBar.module.scss'
@@ -39,6 +27,7 @@ const priceData = {
 export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
     const { className } = props
     const filters = useAppSelector(FilterSideBarSelector.getFilters)
+    const isLoading = useAppSelector(FilterSideBarSelector.getIsLoading)
     const searchParams = useAppSelector(getSearchProductParams)
 
     const dispatch = useAppDispatch()
@@ -57,16 +46,18 @@ export const FilterSideBar: FC<IFilterSideBarProps> = (props) => {
             usp.append(name, value)
         } else {
             // Таким образом удаляем нужную пару ключ=значение из usp
-            const updateUsp = usp.toString().replace(name + '=' + value, '')
+            const filter = name + '=' + value
+            const updateUsp = usp.toString().replace(filter, '')
             usp = new URLSearchParams(updateUsp)
         }
-        dispatch(searchProductParamsActions.setUrl(usp.toString()))
+        dispatch(searchProductParamsActions.setUSP(usp.toString()))
     }, [])
 
     return (
         <div
             id="Filter-Sidebar"
             className={clsx(s.FilterSideBar, className)}>
+            {isLoading && <FilterSideBarSkeleton />}
             <FilterList
                 onChange={onChange}
                 filters={filters}

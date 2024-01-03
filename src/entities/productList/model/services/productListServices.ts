@@ -16,7 +16,7 @@ export const fetchProductList = createAsyncThunk(
         const state = getState() as StateSchema
 
         const usp = new URLSearchParams(state.searchProductParams.usp)
-        console.log(usp.toString())
+        // console.log(usp.toString())
         const response = await $axios.get<IProductListSchema>(
             'products?' + usp.toString()
         )

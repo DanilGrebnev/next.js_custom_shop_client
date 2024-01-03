@@ -16,9 +16,11 @@ const filterSidebarSlice = createSlice({
         builder
             .addCase(fetchSidebarFilters.fulfilled, (state, action) => {
                 state.filters = action.payload.filters
+                console.log(state.filters)
                 state.loading = false
+                state.error = ''
             })
-            .addCase(fetchSidebarFilters.pending, (state, action) => {
+            .addCase(fetchSidebarFilters.pending, (state) => {
                 state.loading = true
             })
             .addCase(fetchSidebarFilters.rejected, (state, action) => {

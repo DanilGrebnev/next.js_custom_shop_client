@@ -8,4 +8,12 @@ export class ProductListSelectors {
     static getTotalCount(state: StateSchema) {
         return state.productList.totalCount
     }
+
+    static getIsLoading(state: StateSchema) {
+        return state.productList.loading
+    }
+
+    static getError(state: StateSchema) {
+        return state.productList.error
+    }
 }
