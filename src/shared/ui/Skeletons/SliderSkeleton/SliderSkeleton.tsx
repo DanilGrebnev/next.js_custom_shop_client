@@ -1,11 +1,14 @@
 'use client'
+
 import { FC, CSSProperties } from 'react'
 import { Skeleton } from '@mui/material'
-import { SliderCardSkeleton } from '../SliderCardSkeleton/SliderCardSkeleton'
+import { ProductCardSkeleton } from '../ProductCardSkeleton/ProductCardSkeleton'
 import { ContainerWithTitle } from '../../Containers/ContainerWithTitle'
+import { CreateArrayAndFill } from '@/shared/HOC/CreateArrayAndFill'
 
 import clsx from 'clsx'
 import s from './SliderSkeleton.module.scss'
+import './SliderSkeletonMedia.scss'
 
 interface IindexProps {
     className?: string
@@ -29,15 +32,12 @@ export const SliderSkeleton: FC<IindexProps> = (props) => {
                         animation="wave"
                     />
                 }>
-                <div className={s['slider-skeleton-wrapper']}>
-                    {new Array(amountSkeletons).fill('').map((_, i) => {
-                        return (
-                            <SliderCardSkeleton
-                                key={i}
-                                className={s[`skeleton-item-${i + 1}`]}
-                            />
-                        )
-                    })}
+                <div className={s['slider-skeleton__wrapper']}>
+                    <CreateArrayAndFill
+                        amount={amountSkeletons}
+                        childrenClassName={'slider-skeleton__item'}>
+                        <ProductCardSkeleton />
+                    </CreateArrayAndFill>
                 </div>
             </ContainerWithTitle>
         </div>

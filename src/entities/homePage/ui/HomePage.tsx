@@ -12,6 +12,8 @@ import { useAppSelector } from '@/shared/hooks'
 import { useEffect } from 'react'
 import { HomePageSelectors } from '../model/selectors'
 import { SliderSkeleton } from '@/shared/ui/Skeletons'
+import { CreateArrayAndFill } from '@/shared/HOC/CreateArrayAndFill'
+import { HomePageSkeleton } from '@/shared/ui/Skeletons'
 
 export const HomePage = () => {
     const dispatch = useAppDispatch()
@@ -23,13 +25,7 @@ export const HomePage = () => {
     }, [])
 
     if (isLoading) {
-        return (
-            <>
-                <SliderSkeleton />
-                <SliderSkeleton />
-                <SliderSkeleton />
-            </>
-        )
+        return <HomePageSkeleton />
     }
 
     return (

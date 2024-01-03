@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { ProductListPreviewType } from '@/app/types/Product'
 import { CardPreview, CardButton, Price, SideMenu, Name } from './components'
 import { Rating } from '@/shared/ui/Rating'
-import { IProductCard } from '../types/type'
+import { IProductCard } from '../model/types/type'
 import { Description } from './components/Description/Description'
 import { NavigationRoutes } from '@/app/providers/NavigationRoutes'
 

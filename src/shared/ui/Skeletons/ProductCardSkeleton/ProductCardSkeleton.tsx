@@ -1,18 +1,18 @@
 import { FC } from 'react'
+
 import clsx from 'clsx'
 import Skeleton from '@mui/material/Skeleton'
-
-import s from './SliderCardSkeleton.module.scss'
+import s from './ProductCardSkeleton.module.scss'
 
 interface ISliderCardSkeleton {
     className?: string
 }
 
-export const SliderCardSkeleton: FC<ISliderCardSkeleton> = (props) => {
+export const ProductCardSkeleton: FC<ISliderCardSkeleton> = (props) => {
     const { className } = props
 
     return (
-        <div className={clsx(s.SliderCardSkeleton, className)}>
+        <div className={clsx(s.ProductCardSkeleton, className)}>
             <Skeleton
                 variant="rounded"
                 animation="wave"
