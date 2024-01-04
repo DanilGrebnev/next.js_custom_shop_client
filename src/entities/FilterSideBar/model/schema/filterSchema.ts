@@ -3,10 +3,12 @@ interface FilterItemChoices {
     value: string
 }
 
+type IFilterItemType = 'multiple_choices' | 'number' | 'choices'
+
 export interface FilterItem {
     code: string
     label: string
-    type: 'multiple_choices' | 'number' | 'choices'
+    type: IFilterItemType
     choices: FilterItemChoices[]
 }
 

@@ -6,6 +6,7 @@ import { resetState } from '../model/slice/productSearchInputSlice'
 import { useAppSelector } from '@/shared/hooks'
 import { getProducts } from '../model/selectors/getProducts'
 import { InputSearchProductList } from '@/shared/ui/InputSearchProductList'
+import { debounce } from '@/shared/lib/debounce'
 
 import s from './ProductSearchInput.module.scss'
 import clsx from 'clsx'
@@ -14,9 +15,15 @@ interface ProductSearchInputProps {
     className?: string
 }
 
-export const ProductSearchInput: FC<ProductSearchInputProps> = ({
-    className,
-}) => {
+// const testFn = (a: number, b: string) => {
+//     return { a, b }
+// }
+
+// const testDebounce = debounce(testFn, 2000)
+
+export const ProductSearchInput: FC<ProductSearchInputProps> = (props) => {
+    const { className } = props
+
     const [openList, setOpenList] = useState(false)
 
     const products = useAppSelector(getProducts)
@@ -24,6 +31,7 @@ export const ProductSearchInput: FC<ProductSearchInputProps> = ({
 
     const onChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
         const { value } = target
+        
         if (!value.trim()) return dispatch(resetState())
         dispatch(fetchSearchInputProducts(value))
     }

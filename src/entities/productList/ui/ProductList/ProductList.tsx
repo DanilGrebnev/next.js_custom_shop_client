@@ -7,22 +7,21 @@ import { ProductCard } from '@/shared/ui/Cards'
 import { ProductListSelectors } from '../../model/selectors/productListSelectors'
 import { ProductListPagination } from '@/entities/productListPagination'
 import { ProductListSkeleton } from '@/shared/ui/Skeletons'
+import { getSearchProductParams } from '@/entities/searchProductParams'
 
 import clsx from 'clsx'
 import s from './ProductList.module.scss'
 
 const ProductList = () => {
+    const dispatch = useAppDispatch()
     const products = useAppSelector(ProductListSelectors.getProducts)
-    const productsAmount = useAppSelector(ProductListSelectors.getTotalCount)
     const isLoading = useAppSelector(ProductListSelectors.getIsLoading)
 
-    const dispatch = useAppDispatch()
-
-    const previewOnPage = 8
+    const usp = useAppSelector(getSearchProductParams)
 
     useEffect(() => {
-        dispatch(fetchProductList())
-    }, [])
+        dispatch(fetchProductList({ offset: 0 }))
+    }, [usp])
 
     return (
         <div className={clsx(s['product-list'])}>

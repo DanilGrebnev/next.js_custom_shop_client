@@ -1,4 +1,4 @@
-export { type IProductListSchema } from './model/types/productListSchema'
+export { type IProductListSchema } from './model/types/productListTypes'
 export { productListReducer } from './model/slice/productListSlice'
 export { DynamicProductList as ProductList } from './ui/ProductList/DynamicProductList'
 export { ProductListSelectors } from './model/selectors/productListSelectors'

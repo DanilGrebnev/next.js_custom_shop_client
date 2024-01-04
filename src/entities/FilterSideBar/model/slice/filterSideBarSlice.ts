@@ -1,6 +1,6 @@
-import { IFilterSideBarSchema } from './../schema/filterSchema'
-import { createSlice } from '@reduxjs/toolkit'
+import { IFilterSideBarSchema } from '../schema/filterSchema'
 import { fetchSidebarFilters } from '../services/fetchSidebarFilters'
+import { createSlice } from '@reduxjs/toolkit'
 
 const initialState: IFilterSideBarSchema = {
     filters: [],
@@ -16,7 +16,6 @@ const filterSidebarSlice = createSlice({
         builder
             .addCase(fetchSidebarFilters.fulfilled, (state, action) => {
                 state.filters = action.payload.filters
-                console.log(state.filters)
                 state.loading = false
                 state.error = ''
             })

@@ -1,6 +1,13 @@
-// export const debounce = (fn: any, timeout: number = 300) => {
-//     let timer
-//     return (...args: ) =>{
+type TDebouce = <T>(
+    callback: (...args: T[]) => any,
+    delay: number
+) => (...args: T[]) => void
 
-//     }
-// }
+export const debounce: TDebouce = (callback, delay) => {
+    let timeoutId: ReturnType<typeof setTimeout>
+
+    return (...args) => {
+        clearTimeout(timeoutId)
+        timeoutId = setTimeout(callback, delay, ...args)
+    }
+}

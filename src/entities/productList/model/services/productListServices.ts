@@ -1,22 +1,18 @@
 import { $axios } from '@/app/API'
-import { IProductListSchema } from '../types/productListSchema'
+import { IProductListSchema } from '../types/productListTypes'
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import { StateSchema } from '@/app/providers/StoreProvider'
 
-interface IFetchProductList {
-    offset: number
-    limit: number
-}
-
 export const fetchProductList = createAsyncThunk(
-    'users/fetchByIdStatus',
-    async (_, thunkAPI) => {
-        const { getState } = thunkAPI
-
-        const state = getState() as StateSchema
+    'product/fetchProductList',
+    async ({ offset }: { offset: number }, thunkAPI) => {
+        const state = thunkAPI.getState() as StateSchema
 
         const usp = new URLSearchParams(state.searchProductParams.usp)
-        // console.log(usp.toString())
+
+        usp.set('offset', String(offset))
+        usp.set('limit', String(state.productListPagination.previewItemsOnPage))
+
         const response = await $axios.get<IProductListSchema>(
             'products?' + usp.toString()
         )

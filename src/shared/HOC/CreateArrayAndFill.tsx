@@ -13,9 +13,11 @@ interface ICreateArrayAndFillProps {
  * Компонент высшего порядка принимает children
  * и возвращает его amount раз, аналогично конструкции
  * new Array(amount).fill('').map(()=> children)
- * @param amount
- * @param children
- * @returns
+ * @param amount - количество раз, которое будет возвращён children
+ * @param children - элемент, который будет возвращён amount раз
+ * @param childrenClassName - если указан данный параметр, то каждый children
+ * будет обёрнут в div с указанным классом, так же к классу будет прибавлен индекс children-а, начиная с 1
+ * @param wrapperClassName - оборачивает все возвращаемые элементы в div с классом wrapperClassName
  */
 export const CreateArrayAndFill: FC<ICreateArrayAndFillProps> = (props) => {
     const { amount, children, childrenClassName, wrapperClassName } = props

@@ -8,7 +8,6 @@ export const searchProductParamsSlice = createSlice({
     name: 'searchProductParams',
     initialState,
     reducers: {
-        // set url search params
         setUSP(state, action: PayloadAction<string>) {
             state.usp = action.payload
         },
