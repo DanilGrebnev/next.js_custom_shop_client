@@ -30,7 +30,7 @@ export const FilterList: FC<IFilterListProps> = memo((props) => {
                             {filterItem?.choices?.map((choicesItem) => {
                                 return (
                                     <li key={v4()}>
-                                        {filterItem.code === 'colors' ? (
+                                        {filterItem.code === 'color' ? (
                                             <ColorCheckBox
                                                 onChange={onChange}
                                                 name={filterItem.code}
