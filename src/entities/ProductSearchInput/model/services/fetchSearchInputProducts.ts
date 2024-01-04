@@ -5,7 +5,7 @@ import { IProductSearchInputSchema } from '../schema/productSearchInputSchema'
 type Response = Omit<IProductSearchInputSchema, 'loading' | 'error'>
 
 export const fetchSearchInputProducts = createAsyncThunk(
-    'fetchSearchInput/products',
+    'products/fetchSearchInput',
     async (searchString: string) => {
         const response = await $axios.get<Response>(
             'products?search=' + searchString

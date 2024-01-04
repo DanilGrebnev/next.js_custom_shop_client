@@ -5,8 +5,9 @@ import React, { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SliderButton } from '@/shared/ui/SliderButton'
 import { Thumbs } from 'swiper/modules'
-
 // import mock from '@/mock/mock'
+
+import blurImg from '@/shared/assets/blur.webp'
 
 import 'swiper/css'
 import 'swiper/css/free-mode'
@@ -38,6 +39,8 @@ export const ThumbsGallery = (props: IThumbsGalleryProps) => {
                             className="main-swiper__slide"
                             key={i}>
                             <Image
+                                placeholder="blur"
+                                blurDataURL={blurImg.blurDataURL}
                                 alt={alt}
                                 width={1000}
                                 quality={100}
@@ -61,6 +64,8 @@ export const ThumbsGallery = (props: IThumbsGalleryProps) => {
                             className="navigation-swiper__slide"
                             key={i}>
                             <Image
+                                placeholder="blur"
+                                blurDataURL={blurImg.blurDataURL}
                                 alt={alt}
                                 width={102}
                                 height={102}

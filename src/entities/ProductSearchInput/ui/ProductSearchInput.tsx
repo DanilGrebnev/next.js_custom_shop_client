@@ -15,24 +15,19 @@ interface ProductSearchInputProps {
     className?: string
 }
 
-// const testFn = (a: number, b: string) => {
-//     return { a, b }
-// }
-
-// const testDebounce = debounce(testFn, 2000)
-
 export const ProductSearchInput: FC<ProductSearchInputProps> = (props) => {
     const { className } = props
-
-    const [openList, setOpenList] = useState(false)
-
-    const products = useAppSelector(getProducts)
     const dispatch = useAppDispatch()
+    const [openList, setOpenList] = useState(false)
+    const products = useAppSelector(getProducts)
 
     const onChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
         const { value } = target
-        
-        if (!value.trim()) return dispatch(resetState())
+
+        if (!value.trim()) {
+            return dispatch(resetState())
+        }
+
         dispatch(fetchSearchInputProducts(value))
     }
 

@@ -1,10 +1,9 @@
 //@ts-nocheck
 'use client'
+
 import { NavigationRoutes } from '@/app/providers/NavigationRoutes'
 import { BreadCrumbs } from '@/shared/ui/BreadCrumbs'
 import { ThumbsGallery } from '@/shared/ui/ThumbsGallery'
-import clsx from 'clsx'
-import s from './ProductPage.module.scss'
 import { Rating } from '@/shared/ui/Rating'
 import { StandartDropDown } from '@/shared/ui/StandartDropDown'
 import { ProductBuyControl } from '@/entities/product'
@@ -14,6 +13,9 @@ import { useEffect } from 'react'
 import { fetchProductById } from '../model/services/fetchProductById'
 import { useAppDispatch } from '@/shared/hooks'
 import { getProductPageIsLoading } from '../model/selectors/getProductPageIsLoading'
+
+import clsx from 'clsx'
+import s from './ProductPage.module.scss'
 
 interface IProductPage {
     productId: string
@@ -36,6 +38,7 @@ export const ProductPage = (props: IProductPage) => {
                     { href: NavigationRoutes.main(), label: 'Home' },
                     { href: NavigationRoutes.shop(), label: 'Shop' },
                     {
+                        //! ошибка в категориях, нет name, там приходит массив!
                         href: '/shop?=' + product.category?.name,
                         label: product.category?.name,
                     },

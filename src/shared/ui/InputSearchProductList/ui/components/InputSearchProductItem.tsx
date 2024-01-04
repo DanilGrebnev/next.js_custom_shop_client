@@ -4,6 +4,7 @@ import { type FC, memo } from 'react'
 import Link from 'next/link'
 import { Rating } from '@/shared/ui/Rating'
 import Image, { StaticImageData } from 'next/image'
+import blurImg from '@/shared/assets/blur.webp'
 
 import s from './InputSearchProductItem.module.scss'
 
@@ -26,6 +27,8 @@ export const InputSearchProductItem: FC<IInputSearchProductItemProps> = memo(
                 onClick={onClick}
                 href={'/product/' + productId}>
                 <Image
+                    placeholder="blur"
+                    blurDataURL={blurImg.blurDataURL}
                     alt={alt}
                     src={image}
                     width={80}
