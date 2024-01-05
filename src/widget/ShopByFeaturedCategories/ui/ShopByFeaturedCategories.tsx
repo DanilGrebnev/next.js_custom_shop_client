@@ -14,9 +14,9 @@ interface IShopByFeaturedCategoriesProps {
     categories: ICategory[]
 }
 
-export const ShopByFeaturedCategories: FC<
-    IShopByFeaturedCategoriesProps
-> = async (props) => {
+export const ShopByFeaturedCategories: FC<IShopByFeaturedCategoriesProps> = (
+    props
+) => {
     const { categories } = props
 
     return (
