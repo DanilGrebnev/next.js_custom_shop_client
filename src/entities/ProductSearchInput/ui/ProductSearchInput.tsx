@@ -1,4 +1,5 @@
 'use client'
+
 import { ChangeEvent, FC, useEffect, useState, useCallback } from 'react'
 import { fetchSearchInputProducts } from '../model/services/fetchSearchInputProducts'
 import { useAppDispatch } from '@/shared/hooks'
@@ -21,7 +22,7 @@ export const ProductSearchInput: FC<ProductSearchInputProps> = (props) => {
     const [openList, setOpenList] = useState(false)
     const products = useAppSelector(getProducts)
 
-    const onChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    const onChange = debounce(({ target }: ChangeEvent<HTMLInputElement>) => {
         const { value } = target
 
         if (!value.trim()) {
@@ -29,7 +30,7 @@ export const ProductSearchInput: FC<ProductSearchInputProps> = (props) => {
         }
 
         dispatch(fetchSearchInputProducts(value))
-    }
+    }, 1000)
 
     const onClose = useCallback(() => {
         setOpenList(false)

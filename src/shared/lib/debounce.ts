@@ -1,9 +1,9 @@
-type TDebouce = <T>(
-    callback: (...args: T[]) => any,
+type TDebounce = <T extends any[], R extends any>(
+    callback: (...args: T) => R,
     delay: number
-) => (...args: T[]) => void
+) => (...args: T) => void
 
-export const debounce: TDebouce = (callback, delay) => {
+export const debounce: TDebounce = (callback, delay) => {
     let timeoutId: ReturnType<typeof setTimeout>
 
     return (...args) => {
