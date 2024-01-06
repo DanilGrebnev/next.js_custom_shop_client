@@ -14,16 +14,12 @@ export const FiltersList: FC<IFilterListProps> = memo((props) => {
     return (
         <>
             {filters?.map((filterItem) => {
-                if (filterItem.type === 'number') {
-                    return (
-                        <FilterRangeItem
-                            key={v4()}
-                            filterItem={filterItem}
-                        />
-                    )
-                }
-
-                return (
+                return filterItem.type === 'number' ? (
+                    <FilterRangeItem
+                        key={v4()}
+                        filterItem={filterItem}
+                    />
+                ) : (
                     <FilterListItem
                         key={v4()}
                         filterItem={filterItem}
