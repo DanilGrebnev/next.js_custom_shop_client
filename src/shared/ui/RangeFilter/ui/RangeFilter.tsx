@@ -31,14 +31,14 @@ export const RangeFilter: FC<IRangeFilterProps> = (props) => {
     const onChangeValue1 = (e: Event) => {
         const { value } = e.target
         if (!isNumber(value)) return
-        setInput1(value)
+        setInput1(value.trim())
         onChange?.(e)
     }
 
     const onChangeValue2 = (e: Event) => {
         const { value } = e.target
         if (!isNumber(value)) return
-        setInput2(value)
+        setInput2(value.trim())
         onChange?.(e)
     }
 

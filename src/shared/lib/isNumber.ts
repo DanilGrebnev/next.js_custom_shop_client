@@ -3,5 +3,5 @@
  * @param string
  */
 export const isNumber = (string: string) => {
-    return !/[а-яА-Яa-zA-Z\!\?\_\-\=\.\,]/.test(string)
+    return !/\D/.test(string)
 }
