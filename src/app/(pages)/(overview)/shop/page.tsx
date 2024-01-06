@@ -30,6 +30,7 @@ export default async function ShopPage() {
                     },
                 ]}
             />
+            
             <section
                 id="Shop-Page"
                 className={clsx('contain', s['shop-page'])}>

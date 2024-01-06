@@ -1,6 +1,8 @@
 'use client'
+
 import { ErrorDetails } from '../../ErrorDetails/ui/ErrorDetails'
 import { type FC } from 'react'
+
 import clsx from 'clsx'
 import s from './ErrorPage.module.scss'
 
@@ -14,14 +16,13 @@ export const ErrorPage: FC<IErrorPageProps> = (props) => {
     const { className, error, reset } = props
 
     return (
-        <div className={clsx('ErrorPage', 'contain', s.ErrorPage, className)}>
+        <div className={clsx('ErrorPage', s.ErrorPage, className)}>
             <h1>УПС!</h1>
             <h3>Возникла непредвиденная ошибка.</h3>
-            <ErrorDetails>{JSON.stringify(error)}</ErrorDetails>
-            <button
-                onClick={() => {
-                    document.location.reload()
-                }}>
+
+            <ErrorDetails>{error}</ErrorDetails>
+
+            <button onClick={() => document.location.reload()}>
                 Обновить страницу
             </button>
         </div>

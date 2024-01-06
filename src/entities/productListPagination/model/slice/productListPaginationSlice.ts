@@ -3,7 +3,7 @@ import type { IProductListPaginationSchema } from '../schema/ProductListPaginati
 import { PayloadAction } from '@reduxjs/toolkit'
 
 const initialState: IProductListPaginationSchema = {
-    previewItemsOnPage: 12,
+    previewItemsOnPage: 2,
 }
 
 const productListPagination = createSlice({

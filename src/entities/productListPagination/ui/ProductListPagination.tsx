@@ -1,6 +1,6 @@
 'use client'
 
-import { type FC, useMemo, useCallback } from 'react'
+import { type FC, useMemo, ChangeEvent } from 'react'
 import { Pagination } from '@/shared/ui/Pagination'
 import { useAppDispatch, useAppSelector } from '@/shared/hooks'
 import { ProductListSelectors } from '@/entities/productList'
@@ -8,6 +8,7 @@ import { fetchProductList } from '@/entities/productList'
 import { calculatePagesAmount } from '../model/lib/calculatePagesAmount'
 import { calculateOffset } from '../model/lib/calculateOffset'
 import { ProductListPaginationSelectors } from '../model/selectors/productListPaginationSelectors'
+import { ClientErrorBoundary } from '@/shared/ui/ClientErrorBoundary'
 
 interface IProductListPaginationProps {
     className?: string
@@ -26,7 +27,7 @@ export const ProductListPagination: FC<IProductListPaginationProps> = ({
         ProductListPaginationSelectors.getPreviewItemsOnPage
     )
 
-    const onChange = (_: any, pageNumber: number) => {
+    const onChange = (event: ChangeEvent<unknown>, pageNumber: number) => {
         const offset = calculateOffset({ pageNumber, previewItemsOnPage })
 
         dispatch(fetchProductList({ offset }))
@@ -37,14 +38,16 @@ export const ProductListPagination: FC<IProductListPaginationProps> = ({
             previewItemsOnPage,
             productsAmount,
         })
-    }, [productsAmount])
+    }, [productsAmount, previewItemsOnPage])
 
     return (
-        <Pagination
-            className={className}
-            count={pagesAmount}
-            onChange={onChange}
-        />
+        <ClientErrorBoundary>
+            <Pagination
+                className={className}
+                count={pagesAmount}
+                onChange={onChange}
+            />
+        </ClientErrorBoundary>
     )
 }
 

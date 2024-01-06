@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import s from '../ui/FilterSideBar.module.scss'
+import s from '../../ui/FilterSideBar.module.scss'
 
 export const getClass = (code: string) => {
     if (code === 'color') {

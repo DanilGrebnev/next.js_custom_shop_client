@@ -21,7 +21,7 @@ const ProductList = () => {
 
     useEffect(() => {
         dispatch(fetchProductList({ offset: 0 }))
-    }, [usp])
+    }, [usp, dispatch])
 
     return (
         <div className={clsx(s['product-list'])}>

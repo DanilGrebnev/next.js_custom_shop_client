@@ -15,33 +15,3 @@
         margin-bottom: 1em;
     }
 }
-
-.color-filter {
-    width: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-}
-
-.color-filter__list {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
-}
-
-.vertical-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.filter-by-price__inputs {
-    display: flex;
-    gap: 20px;
-
-    input {
-        max-width: 110px;
-        display: block;
-        padding: 8px 10px;
-    }
-}

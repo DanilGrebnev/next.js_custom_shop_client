@@ -29,7 +29,7 @@ export const ProductPage = (props: IProductPage) => {
 
     useEffect(() => {
         dispatch(fetchProductById(productId))
-    }, [])
+    }, [dispatch, productId])
 
     return (
         <>

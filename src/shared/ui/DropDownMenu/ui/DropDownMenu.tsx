@@ -52,6 +52,8 @@ export const DropDownMenu: FC<IDropDownMenuProps> = (props) => {
         document.addEventListener('click', onClose)
 
         return () => document.removeEventListener('click', onClose)
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

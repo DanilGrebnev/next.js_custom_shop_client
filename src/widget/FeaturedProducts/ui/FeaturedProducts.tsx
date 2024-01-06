@@ -1,9 +1,8 @@
 'use client'
+
 import { ContainerWithTitle } from '@/shared/ui/Containers/ContainerWithTitle'
 import { Slider } from '@/shared/ui/Slider'
 import { ProductCard } from '@/shared/ui/Cards'
-import { IProduct } from '@/app/types/Product'
-import { ReserveErrorComponent } from '@/shared/ui/ReserveErrorComponent'
 import { IHomePageProducts } from '@/app/types/HomePage'
 import mock from '@/mock/mock'
 

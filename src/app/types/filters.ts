@@ -1,10 +1,12 @@
-interface FilterItemChoices {
+export interface IFilterItemChoices {
     label: string
     value: string
 }
 
+export type IFilterItemCode = 'color' | 'rating' | string
+
 interface IFilter {
-    code: 'color' | 'rating' | string
+    code: IFilterItemCode
     label: string
     type: 'multiple_choices' | 'number' | 'choices'
 }
@@ -16,7 +18,7 @@ interface IFilterItemNumber extends IFilter {
 }
 
 interface IFilterItemList extends IFilter {
-    choices?: FilterItemChoices[]
+    choices?: IFilterItemChoices[]
 }
 
 export type IFilterItem = IFilterItemNumber & IFilterItemList

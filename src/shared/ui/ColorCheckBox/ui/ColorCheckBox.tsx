@@ -1,6 +1,6 @@
 'use client'
 
-import { FC, ChangeEvent, useState, memo } from 'react'
+import { FC, ChangeEvent, memo } from 'react'
 import CheckMarkIcon from '/public/static/icons/check-mark.svg'
 import s from './ColorCheckBox.module.scss'
 
@@ -11,14 +11,11 @@ interface IColorCheckBoxProps {
     value: string
 }
 
-export const ColorCheckBox: FC<IColorCheckBoxProps> = (props) => {
-    const { color, onChange, value, name } = props
-    // const [checked, setChecked] = useState(false)
+export const ColorCheckBox: FC<IColorCheckBoxProps> = memo((props) => {
+    const { onChange, color, value, name } = props
 
     const onInputChange = (e: ChangeEvent<HTMLInputElement>) => {
         onChange?.(e)
-        // setChecked((prev) => !prev)
-        // console.log(checked)
     }
 
     return (
@@ -26,7 +23,6 @@ export const ColorCheckBox: FC<IColorCheckBoxProps> = (props) => {
             className={s.ColorCheckBox}
             style={{ background: color }}>
             <input
-                // checked={checked}
                 value={value}
                 name={name}
                 type="checkbox"
@@ -39,6 +35,6 @@ export const ColorCheckBox: FC<IColorCheckBoxProps> = (props) => {
             </div>
         </label>
     )
-}
+})
 
 ColorCheckBox.displayName = 'ColorCheckBox'

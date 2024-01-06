@@ -11,6 +11,16 @@ export const searchProductParamsSlice = createSlice({
         setUSP(state, action: PayloadAction<string>) {
             state.usp = action.payload
         },
+
+        /**
+         * Удаляет ключ и значение из url search params
+         * @param substring
+         */
+        deleteParamsBySubstring(state, action: PayloadAction<string>) {
+            state.usp = new URLSearchParams(
+                state.usp.replace(action.payload, '')
+            ).toString()
+        },
     },
 })
 

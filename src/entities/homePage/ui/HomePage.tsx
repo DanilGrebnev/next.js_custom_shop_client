@@ -11,9 +11,8 @@ import { useAppDispatch } from '@/shared/hooks'
 import { useAppSelector } from '@/shared/hooks'
 import { useEffect } from 'react'
 import { HomePageSelectors } from '../model/selectors'
-import { SliderSkeleton } from '@/shared/ui/Skeletons'
-import { CreateArrayAndFill } from '@/shared/HOC/CreateArrayAndFill'
 import { HomePageSkeleton } from '@/shared/ui/Skeletons'
+import { ClientErrorBoundary } from '@/shared/ui/ClientErrorBoundary'
 
 export const HomePage = () => {
     const dispatch = useAppDispatch()
@@ -22,7 +21,7 @@ export const HomePage = () => {
 
     useEffect(() => {
         dispatch(fetchHomePageData())
-    }, [])
+    }, [dispatch])
 
     if (isLoading) {
         return <HomePageSkeleton />
@@ -30,19 +29,33 @@ export const HomePage = () => {
 
     return (
         <section id="Home-Page">
-            <TopSlider sliderImages={homePageData?.sliderImages} />
+            <ClientErrorBoundary className="contain">
+                <TopSlider sliderImages={homePageData?.sliderImages} />
+            </ClientErrorBoundary>
 
-            <FeaturedProducts products={homePageData?.featureProducts} />
+            <ClientErrorBoundary className="contain">
+                <FeaturedProducts products={homePageData?.featureProducts} />
+            </ClientErrorBoundary>
 
-            <NewProducts products={homePageData?.newProducts} />
+            <ClientErrorBoundary className="contain">
+                <NewProducts products={homePageData?.newProducts} />
+            </ClientErrorBoundary>
 
-            <FeedBackBlock comments={homePageData?.comments} />
+            <ClientErrorBoundary className="contain">
+                <FeedBackBlock comments={homePageData?.comments} />
+            </ClientErrorBoundary>
 
-            <BestsellerProducts products={homePageData?.bestsellerProducts} />
+            <ClientErrorBoundary className="contain">
+                <BestsellerProducts
+                    products={homePageData?.bestsellerProducts}
+                />
+            </ClientErrorBoundary>
 
-            <ShopByFeaturedCategories
-                categories={homePageData?.featuredCategories}
-            />
+            <ClientErrorBoundary className="contain">
+                <ShopByFeaturedCategories
+                    categories={homePageData?.featuredCategories}
+                />
+            </ClientErrorBoundary>
         </section>
     )
 }

@@ -27,6 +27,7 @@ export const CategoryMenuWidget: FC<ICategoryMenuWidgetProps> = () => {
                 console.error('Ошиба получения категорий')
                 console.error(err)
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (

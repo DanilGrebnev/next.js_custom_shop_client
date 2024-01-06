@@ -5,9 +5,9 @@ interface ICalculateOffset {
 /**
  * Функция рассчитывает какое количество товаров нужно пропустить
  * при пагинации
- * @param {Object} object
- * @property {number} object.pageNumber - номер текущей страницы
- * @property {number} object.previewItemsOnPage - видимое количество товаров на странице
+ * @param object
+ * @param object.pageNumber - номер текущей страницы
+ * @param object.previewItemsOnPage - видимое количество товаров на странице
  */
 export const calculateOffset = ({
     pageNumber,
