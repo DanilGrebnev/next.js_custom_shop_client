@@ -3,21 +3,17 @@ import { CheckBox } from '@/shared/ui/CheckBox'
 import { Rating } from '@/shared/ui/Rating'
 import { ColorCheckBox } from '@/shared/ui/ColorCheckBox'
 import { getClass } from '../../../lib/getClass'
-import { FilterItem } from '../../../model/schema/filterSchema'
+import { IFilterItem } from '@/app/types/filters'
 import { v4 } from 'uuid'
 import { RangeFilter } from '@/shared/ui/RangeFilter'
 
-import clsx from 'clsx'
-import s from '../../FilterSideBar.module.scss'
-
 interface IFilterListProps {
-    className?: string
     onChange: (e: ChangeEvent<HTMLInputElement>) => void
-    filters: FilterItem[]
+    filters: IFilterItem[]
 }
 
 export const FilterList: FC<IFilterListProps> = memo((props) => {
-    const { className, filters, onChange } = props
+    const { filters, onChange } = props
 
     return (
         <>
@@ -27,8 +23,8 @@ export const FilterList: FC<IFilterListProps> = memo((props) => {
                         <div
                             id={'Filter-Sidebar__' + filterItem.code}
                             key={v4()}>
-                            <h2>{filterItem.label}</h2>
-                            <RangeFilter />
+                            <h2>{filterItem.label} &#8381;</h2>
+                            <RangeFilter filterItem={filterItem} />
                         </div>
                     )
                 }

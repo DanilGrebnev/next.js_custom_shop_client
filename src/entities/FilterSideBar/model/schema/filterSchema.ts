@@ -1,17 +1,7 @@
-interface FilterItemChoices {
-    label: string
-    value: string
-}
-
-export interface FilterItem {
-    code: 'color' | 'rating' | string
-    label: string
-    type: 'multiple_choices' | 'number' | 'choices'
-    choices: FilterItemChoices[]
-}
+import { IFilterItem } from '@/app/types/filters'
 
 export interface IFilterSideBarSchema {
-    filters: FilterItem[]
+    filters: IFilterItem[]
     loading: boolean
     error: any
 }
