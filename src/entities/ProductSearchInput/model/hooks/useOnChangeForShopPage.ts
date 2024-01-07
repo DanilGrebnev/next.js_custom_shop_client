@@ -24,5 +24,5 @@ export const useOnChangeForShopPage = () => {
         dispatch(searchProductParamsActions.setUSP(uspInstance.toString()))
     }
 
-    return onChangeForShopPage
+    return { onChangeForShopPage }
 }

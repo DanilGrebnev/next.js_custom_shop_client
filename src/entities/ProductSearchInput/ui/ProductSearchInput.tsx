@@ -1,24 +1,24 @@
 'use client'
 
-import { ChangeEvent, FC, useEffect, useState, useCallback } from 'react'
+import { ChangeEvent, FC, useEffect, useCallback } from 'react'
 import { fetchSearchInputProducts } from '../model/services/fetchSearchInputProducts'
 import { useAppDispatch } from '@/shared/hooks'
-import { resetState } from '../model/slice/productSearchInputSlice'
+import {
+    resetState,
+    toggleVisibleSearchList,
+} from '../model/slice/productSearchInputSlice'
 import { useAppSelector } from '@/shared/hooks'
-import { getProducts } from '../model/selectors/getProducts'
+import { ProductSearchInputState } from '../model/selectors/ProductSearchInputState'
 import { InputSearchProductList } from '@/shared/ui/InputSearchProductList'
 import { debounce } from '@/shared/lib/debounce'
 import { usePathname } from 'next/navigation'
-import {
-    getSearchProductParams,
-    searchProductParamsActions,
-} from '../../searchProductParams'
+import { useOnChangeForShopPage } from '../model/hooks/useOnChangeForShopPage'
+import { Input } from './Input/Input'
+import { searchProductParamsActions } from '@/entities/searchProductParams'
+import { useToggleVisibleSearchList } from '../model/hooks/useToggleVisibleSearchList'
 
 import s from './ProductSearchInput.module.scss'
 import clsx from 'clsx'
-import { useOnChangeForShopPage } from '../model/hooks/useOnChangeForShopPage'
-
-type Event = ChangeEvent<HTMLInputElement>
 
 interface ProductSearchInputProps {
     className?: string
@@ -27,15 +27,23 @@ interface ProductSearchInputProps {
 export const ProductSearchInput: FC<ProductSearchInputProps> = (props) => {
     const { className } = props
 
-    const [openList, setOpenList] = useState(false)
-    const products = useAppSelector(getProducts)
-    const pathname = usePathname()
+    useToggleVisibleSearchList()
+
     const dispatch = useAppDispatch()
+    const products = useAppSelector(ProductSearchInputState.getProducts)
+    const isOpenSearchList = useAppSelector(
+        ProductSearchInputState.getIsOpenSearchList
+    )
+    const pathname = usePathname()
+    const { onChangeForShopPage } = useOnChangeForShopPage()
 
-    const onChangeForShopPage = useOnChangeForShopPage()
+    const uspInstance = new URLSearchParams()
 
-    const onChange = debounce((e: Event) => {
+    const onChange = debounce((e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.trim()
+        uspInstance.set('search', value)
+
+        dispatch(searchProductParamsActions.setUSP(uspInstance.toString()))
 
         if (pathname === '/shop') {
             onChangeForShopPage(value)
@@ -50,22 +58,17 @@ export const ProductSearchInput: FC<ProductSearchInputProps> = (props) => {
     }, 1000)
 
     const onClose = useCallback(() => {
-        setOpenList(false)
-    }, [])
-
-    useEffect(() => {
-        products.length && setOpenList(true)
-        !products.length && setOpenList(false)
-    }, [products])
+        dispatch(toggleVisibleSearchList(false))
+    }, [dispatch])
 
     return (
         <div className={clsx(s['product-search-input'], className)}>
-            <input
+            <Input
                 onChange={onChange}
                 placeholder="Search products..."
             />
 
-            {openList && (
+            {isOpenSearchList && (
                 <InputSearchProductList
                     onClick={onClose}
                     products={products}

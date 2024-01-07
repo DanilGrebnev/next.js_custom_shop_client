@@ -1,13 +1,13 @@
 'use client'
 
-import { FC, ReactNode, CSSProperties, memo } from 'react'
+import { FC, ReactNode, CSSProperties, memo, ButtonHTMLAttributes } from 'react'
 
 import MenuIcon from '/public/static/icons/menu-icon.svg'
 import ArrowIcon from '/public/static/icons/arrow.svg'
 import clsx from 'clsx'
 import s from './Button.module.scss'
 
-interface IButtonProps {
+interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string
     focus?: boolean
     style?: CSSProperties
