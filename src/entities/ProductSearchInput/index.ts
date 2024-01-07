@@ -1,4 +1,4 @@
-export { productSearchInputReducer } from '@/entities/productSearchInput/model/slice/productSearchInputSlice'
+export { productSearchInputReducer } from './model/slice/productSearchInputSlice'
 export { ProductSearchInput } from './ui/ProductSearchInput'
 export { type IProductSearchInputSchema } from './model/schema/productSearchInputSchema'
 export {
