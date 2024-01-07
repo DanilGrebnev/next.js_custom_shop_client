@@ -1,5 +1,4 @@
 import { type ICategorySchema } from '@/entities/categories'
-import { type IProductSchema } from '@/entities/product'
 import { type IProductListSchema } from '@/entities/productList'
 import { type IHomePageSchema } from '@/entities/homePage'
 import { type IProductPageSchema } from '@/entities/productPage'
@@ -10,7 +9,6 @@ import { type IProductSearchInputSchema } from '@/entities/productSearchInput'
 import { type ISearchProductParamsSchema } from '@/entities/searchProductParams'
 
 export interface StateSchema {
-    product: IProductSchema
     categories: ICategorySchema
     productList: IProductListSchema
     homePage: IHomePageSchema

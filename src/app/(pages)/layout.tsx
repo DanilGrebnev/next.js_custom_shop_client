@@ -5,6 +5,7 @@ import { Header } from '@/widget/Header'
 import { Footer } from '@/widget/Footer/ui/Footer'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import { StoreProvider } from '../providers/StoreProvider'
+import { ClientErrorBoundary } from '@/shared/ui/ClientErrorBoundary'
 
 import '../styles/globals.scss'
 
@@ -22,9 +23,13 @@ const RootLayout = ({ children }: ILayout) => {
                 <StoreProvider>
                     <AppRouterCacheProvider>
                         <section id="App">
-                            <Header />
+                            <ClientErrorBoundary>
+                                <Header />
+                            </ClientErrorBoundary>
                             {children}
-                            <Footer />
+                            <ClientErrorBoundary>
+                                <Footer />
+                            </ClientErrorBoundary>
                         </section>
                     </AppRouterCacheProvider>
                 </StoreProvider>

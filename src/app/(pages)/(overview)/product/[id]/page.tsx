@@ -1,4 +1,3 @@
-import { Metadata } from 'next'
 import { getProduct, getProductTEST } from './api'
 import { ProductPage as ProductPageClient } from '@/entities/productPage'
 import { ClientErrorBoundary } from '@/shared/ui/ClientErrorBoundary'
@@ -19,8 +18,8 @@ export const generateMetadata = async ({ params }: IProductPage) => {
     } catch (err) {
         console.log(err)
         return {
-            title: 'default',
-            description: 'default',
+            title: 'Ошибка загрузки товара',
+            description: 'Ошибка загрузки товара',
         }
     }
 }

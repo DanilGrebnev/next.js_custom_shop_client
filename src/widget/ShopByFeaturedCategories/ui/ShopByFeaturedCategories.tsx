@@ -1,17 +1,17 @@
 'use client'
+
 import { FC } from 'react'
 import { Slider } from '@/shared/ui/Slider'
 import { FullWidthContainer } from '@/shared/ui/Containers/FullWidthContainer'
 import { ContainerWithTitle } from '@/shared/ui/Containers/ContainerWithTitle'
-import { getData } from '@/mock/mock'
 import { CardByFutureCategories } from '@/shared/ui/Cards'
-import { ICategory } from '@/app/types/category'
+import { IHomePageCategory } from '@/app/types/category'
 
-import clsx from 'clsx'
+import { getData } from '@/mock/mock'
 
 interface IShopByFeaturedCategoriesProps {
     className?: string
-    categories: ICategory[]
+    categories: IHomePageCategory[]
 }
 
 export const ShopByFeaturedCategories: FC<IShopByFeaturedCategoriesProps> = (
@@ -31,9 +31,9 @@ export const ShopByFeaturedCategories: FC<IShopByFeaturedCategoriesProps> = (
                             return (
                                 <CardByFutureCategories
                                     key={i}
-                                    image={props.image}
-                                    name={props.name}
-                                    amount={1}
+                                    image={props?.image}
+                                    name={props?.name}
+                                    amount={String(props?.productCount) || ''}
                                 />
                             )
                         })}

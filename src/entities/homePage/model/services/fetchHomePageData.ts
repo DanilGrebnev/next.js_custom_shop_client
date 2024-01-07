@@ -6,7 +6,7 @@ export const fetchHomePageData = createAsyncThunk(
     'homePage/fetchData',
     async () => {
         const response = await $axios.get<IHomePageSchema['homePageData']>(
-            'home_page'
+            'home'
         )
 
         return response.data

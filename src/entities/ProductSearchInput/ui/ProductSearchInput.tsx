@@ -1,6 +1,6 @@
 'use client'
 
-import { ChangeEvent, FC, useEffect, useCallback } from 'react'
+import { ChangeEvent, FC, useCallback, useRef } from 'react'
 import { fetchSearchInputProducts } from '../model/services/fetchSearchInputProducts'
 import { useAppDispatch } from '@/shared/hooks'
 import {
@@ -56,6 +56,10 @@ export const ProductSearchInput: FC<ProductSearchInputProps> = (props) => {
 
         dispatch(fetchSearchInputProducts(value))
     }, 1000)
+
+    const onFocus = () => {
+        
+    }
 
     const onClose = useCallback(() => {
         dispatch(toggleVisibleSearchList(false))

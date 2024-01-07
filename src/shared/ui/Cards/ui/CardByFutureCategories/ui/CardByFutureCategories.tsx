@@ -1,6 +1,5 @@
 import { FC } from 'react'
 import { CardWrapper } from '@/shared/ui/Cards'
-import Link from 'next/link'
 import clsx from 'clsx'
 import s from './CardByFutureCategories.module.scss'
 import Image from 'next/image'
@@ -9,7 +8,7 @@ interface ICardByFutureCategoriesProps {
     className?: string
     name: string
     image: any
-    amount: number
+    amount: string
 }
 
 export const CardByFutureCategories: FC<ICardByFutureCategoriesProps> = (

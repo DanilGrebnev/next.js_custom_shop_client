@@ -3,9 +3,10 @@ export interface ICategory {
     name: string
     slug: string
     image: string
-    lft: number
-    rght: number
-    treeId: number
-    level: number
-    parent: any
+    parent: any | null
+    children: []
+}
+
+export interface IHomePageCategory extends Omit<ICategory, 'children'> {
+    productCount: number
 }

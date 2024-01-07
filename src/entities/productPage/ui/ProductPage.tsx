@@ -6,7 +6,6 @@ import { BreadCrumbs } from '@/shared/ui/BreadCrumbs'
 import { ThumbsGallery } from '@/shared/ui/ThumbsGallery'
 import { Rating } from '@/shared/ui/Rating'
 import { StandartDropDown } from '@/shared/ui/StandartDropDown'
-import { ProductBuyControl } from '@/entities/product'
 import { useAppSelector } from '@/shared/hooks'
 import { getProductPageData } from '../model/selectors/getProduct'
 import { useEffect } from 'react'
@@ -70,7 +69,6 @@ export const ProductPage = (props: IProductPage) => {
                     <StandartDropDown title="color" />
                     <StandartDropDown title="storage" />
                     <p>{product.quantity} в наличии</p>
-                    <ProductBuyControl />
                 </div>
             </section>
         </>
