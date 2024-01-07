@@ -1,4 +1,7 @@
-import { FC, ChangeEvent, memo, useState, ReactNode, useEffect } from 'react'
+'use client'
+
+import { FC, ChangeEvent, memo, ReactNode } from 'react'
+import { Checkbox, FormControlLabel } from '@mui/material'
 
 import clsx from 'clsx'
 import s from './CheckBox.module.scss'
@@ -15,15 +18,21 @@ export const CheckBox: FC<ICheckBoxProps> = memo((props) => {
     const { className, name, value, label, onChange } = props
 
     return (
-        <label className={clsx(s.CheckBox, className)}>
-            <input
-                type="checkbox"
-                name={name}
-                value={value}
-                onChange={onChange}
-            />
-            <span>{label}</span>
-        </label>
+        <FormControlLabel
+            className={clsx(s.CheckBox, className)}
+            value={value}
+            control={
+                <Checkbox
+                    size="small"
+                    name={name}
+                    value={value}
+                    color="success"
+                    onChange={onChange}
+                />
+            }
+            label={label}
+            labelPlacement="end"
+        />
     )
 })
 

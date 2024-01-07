@@ -8,9 +8,17 @@ import { useAppSelector } from '@/shared/hooks'
 import { getProducts } from '../model/selectors/getProducts'
 import { InputSearchProductList } from '@/shared/ui/InputSearchProductList'
 import { debounce } from '@/shared/lib/debounce'
+import { usePathname } from 'next/navigation'
+import {
+    getSearchProductParams,
+    searchProductParamsActions,
+} from '../../searchProductParams'
 
 import s from './ProductSearchInput.module.scss'
 import clsx from 'clsx'
+import { useOnChangeForShopPage } from '../model/hooks/useOnChangeForShopPage'
+
+type Event = ChangeEvent<HTMLInputElement>
 
 interface ProductSearchInputProps {
     className?: string
@@ -18,14 +26,23 @@ interface ProductSearchInputProps {
 
 export const ProductSearchInput: FC<ProductSearchInputProps> = (props) => {
     const { className } = props
-    const dispatch = useAppDispatch()
+
     const [openList, setOpenList] = useState(false)
     const products = useAppSelector(getProducts)
+    const pathname = usePathname()
+    const dispatch = useAppDispatch()
 
-    const onChange = debounce(({ target }: ChangeEvent<HTMLInputElement>) => {
-        const { value } = target
+    const onChangeForShopPage = useOnChangeForShopPage()
 
-        if (!value.trim()) {
+    const onChange = debounce((e: Event) => {
+        const value = e.target.value.trim()
+
+        if (pathname === '/shop') {
+            onChangeForShopPage(value)
+            return
+        }
+
+        if (!value) {
             return dispatch(resetState())
         }
 

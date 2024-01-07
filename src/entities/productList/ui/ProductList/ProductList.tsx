@@ -24,14 +24,9 @@ const ProductList = () => {
     }, [usp, dispatch])
 
     return (
-        <div className={clsx(s['product-list'])}>
-            {/* <TogglePreviewTypeBar
-                className={s['top-bar']}
-                previewType={previewType}
-                setRowPreviewType={setRowPreviewType}
-                setCellPreviewType={setCellPreviewType}
-            /> */}
-
+        <div
+            id="Product_List"
+            className={clsx(s['product-list'])}>
             <div
                 className={clsx(s['product-list__content'], s.cell, {
                     // [s.cell]: previewType === ProductListPreviewType.CELL,
